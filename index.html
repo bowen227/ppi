@@ -11,11 +11,211 @@
     <!-- ALL OTHER CSS -->
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css" />
+    <link rel="stylesheet" href="styles.css" />
 
 
     <title>PPI: Player Power Index</title>
 </head>
 <body>
+    <nav class="navbar navbar-expand-md px-md-5">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="img/PPI_logo_blue.png" width="60" height="60" />
+            <h2 class="d-none d-lg-block m-0">Player Power Index</h2>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+          <!-- <span class="navbar-toggler-icon"></span> -->
+          <i class="fa fa-bars fa-lg"></i>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarToggler">
+          <ul class="navbar-nav mt-2 ml-auto mt-lg-0">
+            <li class="nav-item mr-md-4">
+              <a class="nav-link" href="#associations">For Associations <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item mr-md-4">
+              <a class="nav-link" href="#coaches">For Coaches</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn signupBtn" href="signup.html">Sign Up</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+
+    <div class="p-md-5"></div>
+
+    <div class="container main-heading pt-sm-2 py-md-5">
+        <div class="row align-items-center">
+            <div class="col mt-3">
+                <h1>A better way to evaluate baseball players</h1>
+                <p>
+                    Generate a Player Power Index for tryouts, camps and player development.
+                    Save time drafting players and creating balanced teams.
+                </p>
+                <button class="btn learn-btn py-2">Lean More</button>
+            </div>
+            <div class="col mt-3">
+                <img class="main-img" src="img/youth_baseball.jpeg" width="100%" height="auto" />
+            </div>
+        </div>
+    </div>
+
+    <div class="py-5"></div>
+
+    <div id="associations" class="py-md-5"></div>
+
+    <div class="py-md-5"></div>
+
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col">
+                <h2>Associations</h2>
+            </div>
+        </div>
+        <div class="row pt-1">
+            <div class="col-md-4 my-5">
+                <div class="media align-items-center mb-5">
+                    <i class="fa fa-address-card lg"></i>
+                    <div class="media-body">
+                        <h3 class="ml-3 mb-0">Create</h3>
+                    </div>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item border-0">
+                        Create association, add logo and association details
+                    </li>
+                    <li class="list-group-item border-0">
+                        Invite admins and coaches to join association
+                    </li>
+                    <li class="list-group-item border-0">
+                        Add players at sign up, camps or tryouts
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4 my-5">
+                <div class="media align-items-center mb-5">
+                    <i class="fa fa-line-chart lg"></i>
+                    <div class="media-body">
+                        <h3 class="ml-3 mb-0">Evaluate</h3>
+                    </div>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item border-0">
+                        Rank players in 6 key areas of the game
+                    </li>
+                    <li class="list-group-item border-0">
+                        Add notes on the fly during evaluation
+                    </li>
+                    <li class="list-group-item border-0">
+                        Takes 2 coach evaluations to generate a PPI
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4 my-5">
+                <div class="media align-items-center mb-5">
+                    <i class="fa fa-users lg"></i>
+                    <div class="media-body">
+                        <h3 class="ml-3 mb-0">Draft</h3>
+                    </div>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item border-0">
+                        Use the auto draft feature to create balanced teams
+                    </li>
+                    <li class="list-group-item border-0">
+                        Easily trade same rank players between teams if needed
+                    </li>
+                    <li class="list-group-item border-0">
+                        Auto add players to teams after auto draft
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-5"></div>
+
+    <div id="coaches" class="py-md-5"></div>
+
+    <div class="py-md-5"></div>
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col">
+                <h2>Coaches</h2>
+            </div>
+        </div>
+        <div class="row pt-1">
+            <div class="col-md-4 my-5">
+                <div class="media align-items-center mb-5">
+                    <i class="fa fa-address-card lg"></i>
+                    <div class="media-body">
+                        <h3 class="ml-3 mb-0">Create</h3>
+                    </div>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item border-0">
+                        Create team, add team logo and details
+                    </li>
+                    <li class="list-group-item border-0">
+                        Invite assistant coaches to join the team
+                    </li>
+                    <li class="list-group-item border-0">
+                        Add players at sign up, camps or tryouts
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4 my-5">
+                <div class="media align-items-center mb-5">
+                    <i class="fa fa-line-chart lg"></i>
+                    <div class="media-body">
+                        <h3 class="ml-3 mb-0">Evaluate</h3>
+                    </div>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item border-0">
+                        Rank players in 6 key areas of the game
+                    </li>
+                    <li class="list-group-item border-0">
+                        Add notes on the fly during evaluations
+                    </li>
+                    <li class="list-group-item border-0">
+                        Takes 2 coach evaluations to generate a PPI
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4 my-5">
+                <div class="media align-items-center mb-5">
+                    <i class="fa fa-users lg"></i>
+                    <div class="media-body">
+                        <h3 class="ml-3 mb-0">Report</h3>
+                    </div>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item border-0">
+                        Use the PPI per area to see weaknesses
+                    </li>
+                    <li class="list-group-item border-0">
+                        Update a players PPI as the season goes on to show progress
+                    </li>
+                    <li class="list-group-item border-0">
+                        End of season evaluation to see overall player growth
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-5"></div>
+
+    <div class="py-md-5"></div>
+
+    <div class="py-md-5"></div>
+
+    <div class="jumbotron jumbotron-fluid m-0 px-3">
+        <p>&#169; Player Power Index - PPI</p>
+    </div>
     
 
     <!-- jQuery must come first, then Popper.js, then the Bootstrap JavaScript plugins.-->

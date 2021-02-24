@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+  
+
+body, h1, h2, h3, h4, h5, p, span, li, button {
+    font-family: 'Montserrat', sans-serif;
+    color: #212529;
+}
+
+.navbar-toggler {
+    border-color: #072f5f;
+}
+
+.fa-bars {
+    color: #072f5f;
+    border-color: #072f5f;
+}
+
+.navbar-toggler-icon {
+    color: #072f5f;
+}
+
+.nav-link {
+    color: #212529;
+}
+
+.nav-link:hover {
+    color: rgba(0, 0, 0, 0.685);
+}
+
+.signupBtn {
+    border: 1px solid #072f5f;
+    width: 100px;
+}
+
+.signupBtn:hover {
+    background-color: #072f5fc5;
+    color: #fff;
+}
+
+.main-heading {
+    max-width: 1400px;
+}
+
+.main-img {
+    min-width: 350px;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+.learn-btn {
+    background-color: #072f5f;
+    color: #fff;
+}
+
+.lg {
+    font-size: 40px;
+    color: #072f5f;
+}
+
+/* .signup-form-container .card {
+    max-width: 500px;
+    min-width: 350px;
+}
+
+form {
+    max-width: 500px;
+} */

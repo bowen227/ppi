@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- ALL OTHER CSS -->
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css" />
+    <link rel="stylesheet" href="styles.css" />
+
+
+    <title>PPI: Player Power Index - Sign Up</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md px-md-5">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="img/PPI_logo_blue.png" width="60" height="60" />
+            <h2 class="d-none d-lg-block m-0">Player Power Index</h2>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+          <!-- <span class="navbar-toggler-icon"></span> -->
+          <i class="fa fa-bars fa-lg"></i>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarToggler">
+          <ul class="navbar-nav mt-2 ml-auto mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link btn signupBtn" href="index.html">Home</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+
+    <div class="container signup-form-container pt-5 d-flex flex-column justify-content-center align-items-center w-100">
+        <div class="card">
+            <h2 class="text-center mb-3 mt-3">Sign Up</h2>
+            <div class="card-body">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a 
+                            class="nav-link active" 
+                            id="association-tab" 
+                            data-toggle="tab" 
+                            href="#association" 
+                            role="tab" 
+                            aria-controls="association" 
+                            aria-selected="true">Association
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            id="coach-tab"
+                            data-toggle="tab"
+                            href="#coach"
+                            role="tab"
+                            aria-controls="coach"
+                            aria-selected="false">Coaches
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div 
+                        class="tab-pane fade show active" 
+                        id="association" 
+                        role="tabpanel"
+                        aria-labelledby="association-tab"
+                    >
+                        <form class="mt-4">
+                            <div class="form-group">
+                                <label for="association">Association Name</label>
+                                <input type="text" class="form-control" id="association" placeholder="Association Name" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Email" required />
+                                <small class="form-text text-muted">We will never share you email</small>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12 col-lg-6">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" placeholder="First Name" required />
+                                </div>
+                                <div class="form-group col-12 col-lg-6">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPass">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirmPass" required />
+                            </div>
+                            <button type="submit" class="btn btn-outline-dark signupBtn" disabled="form.valid">Sign Up</button>
+                        </form>
+                    </div>
+                    <div 
+                    class="tab-pane fade" 
+                    id="coach" 
+                    role="tabpanel"
+                    aria-labelledby="coach-tab"
+                    >
+                        <form class="mt-4">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Email" />
+                                <small class="form-text text-muted">We will never share you email</small>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12 col-lg-6">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" placeholder="First Name" />
+                                </div>
+                                <div class="form-group col-12 col-lg-6">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" />
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPass">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirmPass" />
+                            </div>
+                            <button type="submit" class="btn btn-outline-dark signupBtn" disabled="form.valid">Sign Up</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="my-3">Already have an account? <a href="#">Login</a></p>
+    </div>
+
+    <div class="py-5"></div>
+
+    <div class="py-md-5"></div>
+
+    <div class="py-md-5"></div>
+
+    <div class="jumbotron jumbotron-fluid m-0 px-3">
+        <p>&#169; Player Power Index - PPI</p>
+    </div>
+
+
+    <!-- jQuery must come first, then Popper.js, then the Bootstrap JavaScript plugins.-->
+    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
