@@ -12,14 +12,11 @@ let teamPPI = 0
 // COACH OBJ
 let coach = {
     firstName: 'Ron',
-    lastName: 'Diggity',
-    title: 'Head Coach',
-    profileImg: null
+    lastName: 'Diggity'
 }
 
-// FORM VARIABLES FOR ADDING PLAYERS, ADMINS AND COACHES
-// let firstName = ''
-// let lastName = ''
+// TEAM NAME
+let team = null
 
 // GET PLAYER LIST ELEMENT FROM DOM
 let pList = document.getElementById("playerList")
@@ -78,6 +75,42 @@ displayPlayers()
 ////////////////////////////////////////////////
 //////// DASHBOARD.HTML FUNCTIONS BELOW ////////
 
+// DISPLAY COACH NAME
+const displayName = document.getElementById('coach-association').children[0]
+
+displayName.innerHTML = `Coach ${coach.lastName}`
+
+// DISPLAY TEAM NAME
+const teamName = document.getElementById('coach-association').children[1]
+
+teamName.innerHTML = `${team ? team : `<a href="#" onclick="addTeam()">Add Team Name</a>`}`
+
+// UPDATE COACH DETAILS
+function updateCoachDetails() {
+    const fName = document.getElementById('firstName')
+    const lName = document.getElementById('lastName')
+
+    coach = {
+        firstName: fName.value,
+        lastName: lName.value
+    }
+}
+
+// ADD TEAM NAME
+function addTeam() {
+    teamName.innerHTML = `
+    <div>
+        <input id="tName" type="text" />
+        <button class="btn btn-primary" onclick="saveTeamName(tName.value)">Save</button>
+    </div>
+    `
+}
+
+function saveTeamName(t) {
+    team = t
+    teamName.innerHTML = `${t}`
+}
+
 // ADD NEW PLAYER
 function addPlayer() {
     const fName = document.getElementById('firstName')
@@ -87,7 +120,7 @@ function addPlayer() {
     const p = {
         fName: fName.value,
         lName: lName.value,
-        postition: positions[pIndex],
+        position: positions[pIndex],
         PPI: parseFloat((Math.random() / 100 * 5) *100).toFixed(2),
         profileImg: null
     }
@@ -98,7 +131,7 @@ function addPlayer() {
     <li id="list-item" class="list-group-item player">
         <div class="row">
             <div class="col">
-                <img src="img/default_user.png" width="40" height="40" />
+                ${p.profileImg ? p.profileImg : `<img src="img/default_user.png" width="40" height="40" />`}
             </div>
             <div class="col d-none d-md-block align-self-center">
                 ${p.fName}
@@ -119,12 +152,21 @@ function addPlayer() {
 
 // ADD NEW ADMIN
 function addAdmin() {
-    console.log('Add new admin')
+    const fName = document.getElementById('firstName')
+    const lName = document.getElementById('lastName')
+
+    const a = {
+        fName: fName.value,
+        lName: lName.value,
+        profileImg: null
+    }
+
+    console.log(a)
 }
 
 // ADD NEW COACH
 function addCoach() {
-    console.log('Add new coach')
+    console.log('Add Coach')
 }
 
 // OPEN SETTING MENU
@@ -142,7 +184,11 @@ function uploadCoachProfileImg() {
 //////// PLAYERDETAILS.HTML PAGE FUNCTIONS BELOW ////////
 
 // CREATE NEW PLAYER OBJ FOR PLAYER DETAILS PAGE
-let player = {}
+let currentPlayer = null
+
+// GET SELECTED PLAYER INFO
+// SET IT TO CURRENTPLAYER
+// CHANGE PAGE TO PLAYERDETAILS.HTML
 
 // UPLOAD PLAYER PROFILE IMG
 function uploadPlayerProfileImg() {
