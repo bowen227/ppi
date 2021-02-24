@@ -63,11 +63,6 @@ h1 {
     color: #072f5f;
 }
 
-/* .signup-form-container .card {
-    max-width: 500px;
-    min-width: 350px;
+.login-form-container {
+    min-width: 320px;
 }
-
-form {
-    max-width: 500px;
-} */
