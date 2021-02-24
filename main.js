@@ -5,7 +5,23 @@ let players = []
 const firstNames = ['Tom', 'Easton', 'Max', 'Leigh', 'Samuel', 'Doug', 'Peter', 'Bradley', 'Chad', 'Charles']
 const lastNames = ['Owen', 'Golliher', 'Spears', 'Martin', 'Manning', 'Wells', 'Sokohl', 'Reece', 'Smith', 'Coulter']
 const positions = ['Infield', 'Outfield']
+
+// TEAM PLAYER POWER INDEX
 let teamPPI = 0
+
+// COACH OBJ
+let coach = {
+    firstName: 'Ron',
+    lastName: 'Diggity',
+    title: 'Head Coach',
+    profileImg: null
+}
+
+// FORM VARIABLES FOR ADDING PLAYERS, ADMINS AND COACHES
+// let firstName = ''
+// let lastName = ''
+
+// GET PLAYER LIST ELEMENT FROM DOM
 let pList = document.getElementById("playerList")
 
 // CREATE RANDOM PLAYERS
@@ -19,7 +35,8 @@ function createPlayers() {
             fName: element,
             lName: lastNames[lastNameIndex],
             position: positions[pIndex],
-            PPI: parseFloat((Math.random() / 100 * 5) * 100).toFixed(2)
+            PPI: parseFloat((Math.random() / 100 * 5) * 100).toFixed(2),
+            profileImg: null
         }
 
         players.push(p)
@@ -35,7 +52,7 @@ function displayPlayers() {
         <li id="list-item" class="list-group-item player">
             <div class="row">
                 <div class="col">
-                    <img src="img/default_user.png" width="40" height="40" />
+                    ${element.profileImg ? element.profileImg : `<img src="img/default_user.png" width="40" height="40" />`}
                 </div>
                 <div class="col d-none d-md-block align-self-center">
                     ${element.fName}
@@ -57,9 +74,47 @@ function displayPlayers() {
 
 displayPlayers()
 
+
+////////////////////////////////////////////////
+//////// DASHBOARD.HTML FUNCTIONS BELOW ////////
+
 // ADD NEW PLAYER
 function addPlayer() {
-    console.log('Add new player')
+    const fName = document.getElementById('firstName')
+    const lName = document.getElementById('lastName')
+    const pIndex = Math.floor(Math.random() * 2)
+
+    const p = {
+        fName: fName.value,
+        lName: lName.value,
+        postition: positions[pIndex],
+        PPI: parseFloat((Math.random() / 100 * 5) *100).toFixed(2),
+        profileImg: null
+    }
+
+    players.push(p)
+
+    pList.innerHTML += `
+    <li id="list-item" class="list-group-item player">
+        <div class="row">
+            <div class="col">
+                <img src="img/default_user.png" width="40" height="40" />
+            </div>
+            <div class="col d-none d-md-block align-self-center">
+                ${p.fName}
+            </div>
+            <div class="col align-self-center">
+                ${p.lName}
+            </div>
+            <div class="col d-none d-md-block align-self-center">
+                ${p.position}
+            </div>
+            <div class="col align-self-center">
+                ${p.PPI}
+            </div>
+        </div>
+    </li>
+    `
 }
 
 // ADD NEW ADMIN
@@ -75,4 +130,26 @@ function addCoach() {
 // OPEN SETTING MENU
 function openSettings() {
     console.log('Open settings')
+}
+
+// UPLOAD COACH PROFILE IMAGE
+function uploadCoachProfileImg() {
+    console.log('Coach profile img')
+}
+
+
+/////////////////////////////////////////////////////////
+//////// PLAYERDETAILS.HTML PAGE FUNCTIONS BELOW ////////
+
+// CREATE NEW PLAYER OBJ FOR PLAYER DETAILS PAGE
+let player = {}
+
+// UPLOAD PLAYER PROFILE IMG
+function uploadPlayerProfileImg() {
+    console.log('Player profile img')
+}
+
+// ADD NEW EVALUATION TO PLAYER
+function evaluation() {
+    console.log('Evaluation')
 }
