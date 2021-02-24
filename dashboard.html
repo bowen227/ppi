@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- ALL OTHER CSS -->
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css" />
+    <link rel="stylesheet" href="styles.css" />
+
+
+    <title>PPI: Player Power Index - Dashboard</title>
+</head>
+<body>
+    <nav class="navbar px-md-5">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="img/PPI_logo_blue.png" width="60" height="60" />
+            <h2 class="d-none d-lg-block m-0">Player Power Index</h2>
+        </a>
+        <button class="navbar-toggler" id="user-menu-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <img src="img/default_user.png" width="50" height="50" />
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarToggler">
+          <ul class="navbar-nav mt-2 ml-auto dashboard-nav">
+            <li class="nav-item mr-md-4">
+              <a class="nav-link" href="#">Add Admin <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item mr-md-4">
+              <a class="nav-link" href="#">Add Coach</a>
+            </li>
+            <li class="nav-item mr-md-4">
+                <a class="nav-link" href="#">Settings</a>
+              </li>
+            <li class="nav-item">
+              <a href="index.html" class="btn btn-outline-warning">Sign Out</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+
+    <div class="container py-3 mt-4">
+        <h3>Association or Coach name goes here</h3>
+        <p>If team name</p>
+    </div>
+
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col py-3">
+                <h5>Player List 
+                    <i class="fa fa-plus-square fa-lg ml-5"></i>
+                </h5>
+            </div>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item player">
+                <div class="row">
+                    <div class="col">
+                        <img src="img/default_user.png" width="40" height="40" />
+                    </div>
+                    <div class="col d-none d-md-block align-self-center">
+                        first name
+                    </div>
+                    <div class="col align-self-center">
+                        last name
+                    </div>
+                    <div class="col d-none d-md-block align-self-center">
+                        position
+                    </div>
+                    <div class="col align-self-center">
+                        PPI
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item player">
+                <div class="row">
+                    <div class="col">
+                        <img src="img/default_user.png" width="40" height="40" />
+                    </div>
+                    <div class="col d-none d-md-block align-self-center">
+                        first name
+                    </div>
+                    <div class="col align-self-center">
+                        last name
+                    </div>
+                    <div class="col d-none d-md-block align-self-center">
+                        position
+                    </div>
+                    <div class="col align-self-center">
+                        PPI
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+
+    <!-- jQuery must come first, then Popper.js, then the Bootstrap JavaScript plugins.-->
+    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

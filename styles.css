@@ -58,6 +58,11 @@ h1 {
     color: #fff;
 }
 
+.learn-btn:hover {
+    background-color: #072f5fbb;
+    color: #fff;
+}
+
 .lg {
     font-size: 40px;
     color: #072f5f;
@@ -65,4 +70,30 @@ h1 {
 
 .login-form-container {
     min-width: 320px;
+}
+
+.player:hover {
+    cursor: pointer;
+    background-color: #212529a2;
+    color: #fff;
+}
+
+.fa-plus-square {
+    color: #072f5f;
+}
+
+.fa-plus-square:hover {
+    cursor: pointer;
+}
+
+.dashboard-nav {
+    max-width: 220px;
+}
+
+#user-menu-toggler {
+    border: none;
+}
+
+#user-menu-toggler:focus {
+    outline: none;
 }
