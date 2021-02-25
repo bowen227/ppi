@@ -129,7 +129,7 @@ function addPlayer() {
     players.push(p)
 
     pList.innerHTML += `
-    <li id="list-item" class="list-group-item player">
+    <li id="list-item" class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
         <div class="row">
             <div class="col">
                 <img src=${p.profileImg ? p.profileImg : `img/default_user.png`} width="40" height="40" />
