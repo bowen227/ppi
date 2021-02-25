@@ -123,7 +123,9 @@ function addPlayer() {
         lName: lName.value,
         position: positions[pIndex],
         PPI: parseFloat((Math.random() / 100 * 5) *100).toFixed(2),
-        profileImg: null
+        profileImg: null,
+        attitude: parseFloat((Math.random() / 100 * 5) *100).toFixed(2),
+        coach_comment: null
     }
 
     players.push(p)
@@ -191,6 +193,7 @@ function gotoPlayerDetails(t, e) {
     const lastName = t.children[0].children[2].innerHTML
     const position = t.children[0].children[3].innerHTML
     const PPI = t.children[0].children[4].innerHTML
+
     const sPlayer = {
         profileImg: profileImg,
         fName: firstName.trim(),
@@ -201,7 +204,13 @@ function gotoPlayerDetails(t, e) {
 
     selectedPlayer = sPlayer
 
-    document.location.href = `playerDetails.html?img=${selectedPlayer.profileImg}&fName=${selectedPlayer.fName}&lName=${selectedPlayer.lName}&position=${selectedPlayer.position}&ppi=${selectedPlayer.PPI}`
+    document.location.href = `
+    playerDetails.html?img=${selectedPlayer.profileImg}
+    &fName=${selectedPlayer.fName}
+    &lName=${selectedPlayer.lName}
+    &position=${selectedPlayer.position}
+    &ppi=${selectedPlayer.PPI}
+    `
 }
 
 

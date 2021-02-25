@@ -90,7 +90,12 @@ displayPlayer()
 //             home_first: '',
 //             first_home: '',
 //             mobility: ''
-//         }
+//         },
+//          attitude: {
+//              drive: '',
+//              coachability: ''
+//         },
+//          coach_comment: ''
 //     }
 // ]
 ///////////////////////////////////////////////////////////////////////
@@ -106,7 +111,7 @@ function generateRandomEvals() {
             infield: {
                 mechanics: parseFloat((Math.random() / 100 * 5) *100).toFixed(2),
                 groundballs: parseFloat((Math.random() / 100 * 5) *100).toFixed(2),
-                range: parseFloat((Math.random() / 100 * 5) *100).toFixed(2),
+                range: parseFloat((Math.random() / 100 * 5) *100).toFixed(2)
             },
             outfield: {
                 mechanics: parseFloat((Math.random() / 100 * 5) *100).toFixed(2),
@@ -133,7 +138,12 @@ function generateRandomEvals() {
                 home_first: parseFloat((Math.random() / 100 * 5) *100).toFixed(2),
                 first_home: parseFloat((Math.random() / 100 * 5) *100).toFixed(2),
                 mobility: parseFloat((Math.random() / 100 * 5) *100).toFixed(2)
-            }
+            },
+            attitude: {
+                drive: parseFloat((Math.random() / 100 * 5) *100).toFixed(2),
+                coachability: parseFloat((Math.random() / 100 * 5) *100).toFixed(2)
+            },
+            coach_comment: null
         }
         fakePastEvals.push(e)
     }
@@ -154,7 +164,9 @@ function displayPastEvals() {
         const pitching = (JSON.parse(element.pitching.mechanics) + JSON.parse(element.pitching.speed) + JSON.parse(element.pitching.accuracy) / 3).toFixed(2)
         const hitting = (JSON.parse(element.hitting.mechanics) + JSON.parse(element.hitting.power) + JSON.parse(element.hitting.contact) / 3).toFixed(2)
         const feet = (JSON.parse(element.feet.home_first) + JSON.parse(element.feet.first_home) + JSON.parse(element.feet.mobility) / 3).toFixed(2)
-        
+        const attitude = parseFloat((Math.random() / 100 * 5) *100).toFixed(2)
+        const coach_comment = null
+
         evalDiv.innerHTML += `
         <div class="container py-2">
             <div class="row row-content">
@@ -169,6 +181,7 @@ function displayPastEvals() {
                                     <th>PI</th>
                                     <th>HI</th>
                                     <th>SPD</th>
+                                    <th>ATT</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -179,10 +192,12 @@ function displayPastEvals() {
                                     <td>${pitching}</td>
                                     <td>${hitting}</td>
                                     <td>${feet}</td>
+                                    <td>${attitude}</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -194,5 +209,30 @@ displayPastEvals()
 
 // ADD NEW EVAL
 function newEval() {
-    console.log('Start Eval')
+    let e = {
+        in_mechanics: document.getElementById('in-mechanics').value,
+        in_groundballs: document.getElementById('in-groundballs').value,
+        in_range: document.getElementById('in-range').value,
+        out_mechanics: document.getElementById('out-mechanics').value,
+        out_popups: document.getElementById('out-popups').value,
+        out_range: document.getElementById('out-range').value,
+        throw_mechanics: document.getElementById('throw-mechanics').value,
+        throw_strength: document.getElementById('throw-strength').value,
+        throw_acc: document.getElementById('throw-acc').value,
+        pitch_mechanics: document.getElementById('pitch-mechanics').value,
+        pitch_speed: document.getElementById('pitch-speed').value,
+        pitch_ass: document.getElementById('pitch-acc').value,
+        hit_mechanics: document.getElementById('hit-mechanics').value,
+        hit_power: document.getElementById('hit-power').value,
+        hit_contact: document.getElementById('hit-contact').value,
+        home_first: document.getElementById('home-first').value,
+        first_home: document.getElementById('first-home').value,
+        mobility: document.getElementById('mobility').value,
+        drive: document.getElementById('drive').value,
+        coachability: document.getElementById('coachability').value,
+        coach_comment: document.getElementById('coach-comment').value
+    }
+
+
+    console.log(e)
 }

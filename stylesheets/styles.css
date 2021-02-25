@@ -101,3 +101,8 @@ h1 {
 .slider {
     width: 100%;
 }
+
+.table-responsive:hover {
+    border: 1px solid gray;
+    box-shadow: 2px 2px 4px gray;
+}
