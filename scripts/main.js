@@ -50,7 +50,7 @@ function displayPlayers() {
         <li id="list-item" class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
             <div class="row">
                 <div class="col">
-                    ${element.profileImg ? element.profileImg : `<img src="img/default_user.png" width="40" height="40" />`}
+                    ${element.profileImg ? element.profileImg : `<img src="../img/default_user.png" width="40" height="40" />`}
                 </div>
                 <div class="col d-none d-md-block align-self-center">
                     ${element.fName}
@@ -132,7 +132,7 @@ function addPlayer() {
     <li id="list-item" class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
         <div class="row">
             <div class="col">
-                <img src=${p.profileImg ? p.profileImg : `img/default_user.png`} width="40" height="40" />
+                <img src=${p.profileImg ? p.profileImg : `../img/default_user.png`} width="40" height="40" />
             </div>
             <div class="col d-none d-md-block align-self-center">
                 ${p.fName}
