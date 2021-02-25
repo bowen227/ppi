@@ -1,3 +1,4 @@
+
 // ARRAY OF PLAYERS
 let players = []
 
@@ -46,7 +47,7 @@ createPlayers()
 function displayPlayers() {
     players.forEach(element => {
         pList.innerHTML += `
-        <li id="list-item" class="list-group-item player">
+        <li id="list-item" class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
             <div class="row">
                 <div class="col">
                     ${element.profileImg ? element.profileImg : `<img src="img/default_user.png" width="40" height="40" />`}
@@ -131,7 +132,7 @@ function addPlayer() {
     <li id="list-item" class="list-group-item player">
         <div class="row">
             <div class="col">
-                ${p.profileImg ? p.profileImg : `<img src="img/default_user.png" width="40" height="40" />`}
+                <img src=${p.profileImg ? p.profileImg : `img/default_user.png`} width="40" height="40" />
             </div>
             <div class="col d-none d-md-block align-self-center">
                 ${p.fName}
@@ -180,15 +181,39 @@ function uploadCoachProfileImg() {
 }
 
 
+// CREATE NEW PLAYER OBJ FOR PLAYER DETAILS PAGE
+let selectedPlayer = null
+
+// GO TO PLAYERDETAILS.HTML AND SET CURRENT PLAYER
+function gotoPlayerDetails(t, e) {
+    const profileImg = t.children[0].children[0].children[0].src
+    const firstName = t.children[0].children[1].innerHTML
+    const lastName = t.children[0].children[2].innerHTML
+    const position = t.children[0].children[3].innerHTML
+    const PPI = t.children[0].children[4].innerHTML
+    const sPlayer = {
+        profileImg: profileImg,
+        fName: firstName.trim(),
+        lName: lastName.trim(),
+        position: position.trim(),
+        PPI: PPI.trim()
+    }
+
+    selectedPlayer = sPlayer
+
+    document.location.href = `playerDetails.html?img=${selectedPlayer.profileImg}&fName=${selectedPlayer.fName}&lName=${selectedPlayer.lName}&position=${selectedPlayer.position}&ppi=${selectedPlayer.PPI}`
+}
+
+
 /////////////////////////////////////////////////////////
 //////// PLAYERDETAILS.HTML PAGE FUNCTIONS BELOW ////////
 
-// CREATE NEW PLAYER OBJ FOR PLAYER DETAILS PAGE
-let currentPlayer = null
-
 // GET SELECTED PLAYER INFO
+
 // SET IT TO CURRENTPLAYER
 // CHANGE PAGE TO PLAYERDETAILS.HTML
+
+// document.location.href = playerdetails.html
 
 // UPLOAD PLAYER PROFILE IMG
 function uploadPlayerProfileImg() {
