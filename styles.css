@@ -97,3 +97,7 @@ h1 {
 #user-menu-toggler:focus {
     outline: none;
 }
+
+.slider {
+    width: 100%;
+}

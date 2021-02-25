@@ -17,7 +17,191 @@
     <title>PPI: Player Power Index - Player Details</title>
 </head>
 <body>
-    details works
+    <nav class="navbar px-md-5">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="img/PPI_logo_blue.png" width="60" height="60" />
+            <h2 class="d-none d-lg-block m-0">Player Power Index</h2>
+        </a>
+        <button class="navbar-toggler" id="user-menu-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <img src="img/default_user.png" width="50" height="50" />
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarToggler">
+          <ul class="navbar-nav mt-2 ml-auto dashboard-nav">
+            <li class="nav-item mr-md-4" data-toggle="modal" data-target="#newAdmin">
+              <a class="nav-link" href="#">Add Admin <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item mr-md-4" data-toggle="modal" data-target="#newCoach">
+              <a class="nav-link" href="#">Add Coach</a>
+            </li>
+            <li class="nav-item mr-md-4" onclick="openSettings()">
+                <a class="nav-link" href="#">Settings</a>
+              </li>
+            <li class="nav-item mt-3">
+              <a href="index.html" class="btn btn-outline-warning">Sign Out</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+
+    <div class="py-5"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 py-3">
+                <div class="card">
+                    <div id="player-info" class="card-body">
+                        
+                    </div>
+                </div>
+                <button class="btn btn-outline-danger mt-3" data-toggle="modal" data-target="#newEval" onclick="newEval()">Evaluate</button>
+            </div>
+            <div class="col-sm-6 py-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Past Evaluations</h3>
+                        <div id="player-evals">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL FOR ADDING NEW EVALUATION -->
+    <div class="modal fade" id="newEval" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Evaluation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group py-2">
+                            <h3>Infield</h3>
+                            <div class="p-3">
+                                <label for="in-mechanics">Mechanics</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="5" value="1" class="slider" id="in-mechanics">
+                                </div>
+                                <label for="in-groundballs">Groundballs</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="5" value="1" class="slider" id="in-groundballs">
+                                </div>
+                                <label for="in-range">Range</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="5" value="1" class="slider" id="in-range">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group py-2">
+                            <h3>Outfield</h3>
+                            <div class="p-3">
+                                <label for="out-mechanics">Mechanics</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="5" value="1" class="slider" id="out-mechanics">
+                                </div>
+                                <label for="out-popups">Pop-Ups</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="5" value="1" class="slider" id="out-popups">
+                                </div>
+                                <label for="out-range">Range</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="5" value="1" class="slider" id="out-range">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group py-2">
+                            <h3>Throwing</h3>
+                            <div class="p-3">
+                                <label for="throw-mechanics">Mechanics</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="5" value="1" class="slider" id="throw-mechanics">
+                                </div>
+                                <label for="throw-strength">Strength</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="5" value="1" class="slider" id="throw-strength">
+                                </div>
+                                <label for="throw-acc">Accuracy</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="5" value="1" class="slider" id="throw-acc">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group py-2">
+                            <h3>Pitching</h3>
+                            <div class="p-3">
+                                <label for="pitch-mechanics">Mechanics</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="5" value="1" class="slider" id="pitch-mechanics">
+                                </div>
+                                <label for="pitch-speed">Speed</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="5" value="1" class="slider" id="pitch-speed">
+                                </div>
+                                <label for="pitch-acc">Accuracy</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="5" value="1" class="slider" id="pitch-acc">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group py-2">
+                            <h3>Hitting</h3>
+                            <div class="p-3">
+                                <label for="hit-mechanics">Mechanics</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="5" value="1" class="slider" id="hit-mechanics">
+                                </div>
+                                <label for="hit-power">Power</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="5" value="1" class="slider" id="hit-power">
+                                </div>
+                                <label for="hit-contact">Contact</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="5" value="1" class="slider" id="hit-contact">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group py-2">
+                            <h3>Feet</h3>
+                            <div class="p-3">
+                                <label for="home-first">Home to First</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="5" value="1" class="slider" id="home-first">
+                                </div>
+                                <label for="first-home">First to Home</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="5" value="1" class="slider" id="out-popups">
+                                </div>
+                                <label for="mobility">Mobility</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="5" value="1" class="slider" id="mobility">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addPlayer()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-sm-3 d-none d-sm-block"></div>
+
+    <div class="py-5"></div>
+
+    <div class="py-5"></div>
+
+    <div class="jumbotron jumbotron-fluid m-0 px-3">
+        <p>&#169; Player Power Index - PPI</p>
+    </div>
 
     <!-- jQuery must come first, then Popper.js, then the Bootstrap JavaScript plugins.-->
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
