@@ -22,30 +22,12 @@
             <img src="../img/PPI_logo_blue.png" width="60" height="60" />
             <h2 class="d-none d-lg-block m-0">Player Power Index</h2>
         </a>
-        <a class="btn btn-outline-dark signupbtn" href="dashboard.html">
-            <!-- <img src="../img/default_user.png" width="50" height="50" /> -->
+        <a class="btn btn-outline-dark signupBtn" href="dashboard.html">
             Back
         </a>
-      
-        <!-- <div class="collapse navbar-collapse" id="navbarToggler">
-          <ul class="navbar-nav mt-2 ml-auto dashboard-nav">
-            <li class="nav-item mr-md-4" data-toggle="modal" data-target="#newAdmin">
-              <a class="nav-link" href="#">Add Admin <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item mr-md-4" data-toggle="modal" data-target="#newCoach">
-              <a class="nav-link" href="#">Add Coach</a>
-            </li>
-            <li class="nav-item mr-md-4" onclick="openSettings()">
-                <a class="nav-link" href="#">Settings</a>
-              </li>
-            <li class="nav-item mt-3">
-              <a href="index.html" class="btn btn-outline-warning">Sign Out</a>
-            </li>
-          </ul>
-        </div> -->
     </nav>
 
-    <div class="py-5"></div>
+    <div class="py-5 d-none d-md-block"></div>
 
     <div class="container">
         <div class="row">
@@ -55,7 +37,7 @@
                         
                     </div>
                 </div>
-                <button class="btn btn-outline-danger mt-3" data-toggle="modal" data-target="#newEval" onclick="newEval()">Evaluate</button>
+                <button class="btn btn-outline-danger mt-3" data-toggle="modal" data-target="#newEval">Evaluate</button>
             </div>
             <div class="col-sm-6 py-3">
                 <div class="card">
@@ -207,7 +189,7 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addPlayer()">Save</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="newEval()">Save</button>
                 </div>
             </div>
         </div>

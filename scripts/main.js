@@ -114,8 +114,8 @@ function saveTeamName(t) {
 
 // ADD NEW PLAYER
 function addPlayer() {
-    const fName = document.getElementById('firstName')
-    const lName = document.getElementById('lastName')
+    const fName = document.getElementById('pFirstName')
+    const lName = document.getElementById('pLastName')
     const pIndex = Math.floor(Math.random() * 2)
 
     const p = {
@@ -155,12 +155,9 @@ function addPlayer() {
 
 // ADD NEW ADMIN
 function addAdmin() {
-    const fName = document.getElementById('firstName')
-    const lName = document.getElementById('lastName')
-
     const a = {
-        fName: fName.value,
-        lName: lName.value,
+        fName: document.getElementById('aFirstName').value,
+        lName: document.getElementById('aLastName').value,
         profileImg: null
     }
 
@@ -169,7 +166,13 @@ function addAdmin() {
 
 // ADD NEW COACH
 function addCoach() {
-    console.log('Add Coach')
+    const c = {
+        fName: document.getElementById('cFirstName').value,
+        lName: document.getElementById('cLastName').value
+    }
+
+    console.log(c)
+
 }
 
 // OPEN SETTING MENU
