@@ -1,3 +1,23 @@
+////////////////////////////////////////////////
+///////// SIGNUP.HTML FUNCTIONS BELOW /////////
+
+// SIGNUP ASSOCIATION
+function createAssociation() {
+    console.log("Create association")
+}
+
+
+////////////////////////////////////////////////
+///////// LOGIN.HTML FUNCTIONS BELOW /////////
+
+// SIGNUP COACH
+function createCoach() {
+    console.log("Create coach")
+}
+
+
+////////////////////////////////////////////////
+//////// DASHBOARD.HTML FUNCTIONS BELOW ////////
 
 // ARRAY OF PLAYERS
 let players = []
@@ -71,10 +91,6 @@ function displayPlayers() {
 }
 
 displayPlayers()
-
-
-////////////////////////////////////////////////
-//////// DASHBOARD.HTML FUNCTIONS BELOW ////////
 
 // DISPLAY COACH NAME
 const displayName = document.getElementById('coach-association').children[0]
@@ -175,20 +191,6 @@ function addCoach() {
 
 }
 
-// OPEN SETTING MENU
-function openSettings() {
-    console.log('Open settings')
-}
-
-// UPLOAD COACH PROFILE IMAGE
-function uploadCoachProfileImg() {
-    console.log('Coach profile img')
-}
-
-
-// CREATE NEW PLAYER OBJ FOR PLAYER DETAILS PAGE
-let selectedPlayer = null
-
 // GO TO PLAYERDETAILS.HTML AND SET CURRENT PLAYER
 function gotoPlayerDetails(t, e) {
     const profileImg = t.children[0].children[0].children[0].src
@@ -217,22 +219,15 @@ function gotoPlayerDetails(t, e) {
 }
 
 
-/////////////////////////////////////////////////////////
-//////// PLAYERDETAILS.HTML PAGE FUNCTIONS BELOW ////////
+////////////////////////////////////////////////
+///////// SETTINGS.HTML FUNCTIONS BELOW ////////
 
-// GET SELECTED PLAYER INFO
-
-// SET IT TO CURRENTPLAYER
-// CHANGE PAGE TO PLAYERDETAILS.HTML
-
-// document.location.href = playerdetails.html
-
-// UPLOAD PLAYER PROFILE IMG
-function uploadPlayerProfileImg() {
-    console.log('Player profile img')
+// OPEN SETTING MENU
+function openSettings() {
+    console.log('Open settings')
 }
 
-// ADD NEW EVALUATION TO PLAYER
-function evaluation() {
-    console.log('Evaluation')
+// UPLOAD COACH PROFILE IMAGE
+function uploadCoachProfileImg() {
+    console.log('Coach profile img')
 }

@@ -71,7 +71,7 @@
                         role="tabpanel"
                         aria-labelledby="association-tab"
                     >
-                        <form class="mt-4">
+                        <form class="mt-4" id="association-form">
                             <div class="form-group">
                                 <label for="association">Association Name</label>
                                 <input type="text" class="form-control" id="association" placeholder="Association Name" required />
@@ -99,7 +99,7 @@
                                 <label for="confirmPass">Confirm Password</label>
                                 <input type="password" class="form-control" id="confirmPass" required />
                             </div>
-                            <button type="submit" class="btn btn-outline-dark signupBtn" disabled="form.valid">Sign Up</button>
+                            <button type="submit" class="btn btn-outline-dark signupBtn" disabled="association-form.valid" onclick="signup()">Sign Up</button>
                         </form>
                     </div>
                     <div 
