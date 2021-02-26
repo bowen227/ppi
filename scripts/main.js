@@ -1,22 +1,4 @@
 ////////////////////////////////////////////////
-///////// SIGNUP.HTML FUNCTIONS BELOW /////////
-
-// SIGNUP ASSOCIATION
-function createAssociation() {
-    console.log("Create association")
-}
-
-
-////////////////////////////////////////////////
-///////// LOGIN.HTML FUNCTIONS BELOW /////////
-
-// SIGNUP COACH
-function createCoach() {
-    console.log("Create coach")
-}
-
-
-////////////////////////////////////////////////
 //////// DASHBOARD.HTML FUNCTIONS BELOW ////////
 
 // ARRAY OF PLAYERS

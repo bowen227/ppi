@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- BOOTSTRAP CSS -->
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
 
     <!-- ALL OTHER CSS -->
-    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="../node_modules/bootstrap-social/bootstrap-social.css" />
-    <link rel="stylesheet" href="../stylesheets/styles.css" />
+    <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/node_modules/bootstrap-social/bootstrap-social.css" />
+    <link rel="stylesheet" href="/stylesheets/styles.css" />
 
 
     <title>PPI: Player Power Index - Login</title>
@@ -51,7 +51,7 @@
                         <label for="password">Password</label>
                         <input type="password" class="form-control" id="password" />
                     </div>
-                    <button type="submit" class="btn btn-outline-dark signupBtn" disabled="form.valid">Login</button>
+                    <button type="submit" class="btn btn-outline-dark signupBtn" onclick="login(event)">Login</button>
                 </form>
             </div>
         </div>
@@ -69,8 +69,11 @@
     </div>
 
     <!-- jQuery must come first, then Popper.js, then the Bootstrap JavaScript plugins.-->
-    <script src="../node_modules/jquery/dist/jquery.slim.min.js"></script>
-    <script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Custom scripts -->
+    <script src="/scripts/user.js"></script>
 </body>
 </html>

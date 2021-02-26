@@ -108,7 +108,7 @@
                     role="tabpanel"
                     aria-labelledby="coach-tab"
                     >
-                        <form class="mt-4">
+                        <form class="mt-4" id="coach-form">
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" class="form-control" id="email" placeholder="Email" />
@@ -132,7 +132,7 @@
                                 <label for="confirmPass">Confirm Password</label>
                                 <input type="password" class="form-control" id="confirmPass" />
                             </div>
-                            <button type="submit" class="btn btn-outline-dark signupBtn" disabled="form.valid">Sign Up</button>
+                            <button type="submit" class="btn btn-outline-dark signupBtn" disabled="coach-form.valid">Sign Up</button>
                         </form>
                     </div>
                 </div>
