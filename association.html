@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- ALL OTHER CSS -->
+    <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/node_modules/bootstrap-social/bootstrap-social.css" />
+    <link rel="stylesheet" href="/stylesheets/styles.css" />
+
+
+    <title>PPI: Player Power Index - Association</title>
+</head>
+<body>
+    <nav class="navbar px-md-5">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="../img/PPI_logo_blue.png" width="60" height="60" />
+            <h2 class="d-none d-lg-block m-0">Player Power Index</h2>
+        </a>
+        <button class="navbar-toggler" id="user-menu-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <img src="../img/default_user.png" width="50" height="50" />
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarToggler">
+          <ul class="navbar-nav mt-2 ml-auto dashboard-nav">
+            <li class="nav-item mr-md-4" data-toggle="modal" data-target="#newAdmin">
+              <a class="nav-link" href="#">Add Admin <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item mr-md-4" data-toggle="modal" data-target="#newCoach">
+              <a class="nav-link" href="#">Add Coach</a>
+            </li>
+            <li class="nav-item mr-md-4" onclick="openSettings()">
+                <a class="nav-link" href="#">Settings</a>
+              </li>
+            <li class="nav-item mt-3">
+              <a href="index.html" class="btn btn-outline-warning">Sign Out</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+
+    <!-- List of all players break down by age group -->
+    <!-- Calender to select auto draft date -->
+    <!-- List of coaches and assistant coaches -->
+
+    <!-- jQuery must come first, then Popper.js, then the Bootstrap JavaScript plugins.-->
+    <script src="/node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Custom scripts -->
+    <script src="/scripts/main.js"></script>
+    
+</body>
+</html>
