@@ -238,7 +238,7 @@ function searchPlayer() {
 
         const name = `${element.fName} ${element.lName}`
         
-        if (name.toLowerCase().includes(searchTerm.value)) {
+        if (name.toLowerCase().includes(searchTerm.value.toLowerCase())) {
             pList.innerHTML += `
             <li class="list-group-item">
                 <div class="row align-items-center">
