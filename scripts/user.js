@@ -15,7 +15,22 @@ function createCoach() {
 ////////////////////////////////////////////////
 ///////// LOGIN.HTML FUNCTIONS BELOW /////////
 
+const formError = document.getElementById('formError')
+
 function login(e) {
     e.preventDefault()
-    location.href = "dashboard.html"
+    const t = document.getElementById('type').value
+
+    if (t == 'association') {
+        location.href = "association.html"
+    }
+
+    if (t == 'coach') {
+        location.href = "dashboard.html"
+    }
+
+    if (t == '') {
+        formError.innerHTML = `Need to select type`
+        formError.classList.add('p-2')
+    }
 }
