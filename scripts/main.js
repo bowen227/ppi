@@ -121,9 +121,7 @@ function addPlayer() {
         lName: lName.value,
         position: positions[pIndex],
         PPI: parseFloat((Math.random() / 100 * 5) *100).toFixed(2),
-        profileImg: null,
-        attitude: parseFloat((Math.random() / 100 * 5) *100).toFixed(2),
-        coach_comment: null
+        profileImg: null
     }
 
     players.push(p)

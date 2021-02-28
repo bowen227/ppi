@@ -41,6 +41,15 @@ body, h1, h2, h3, h4, h5, p, span, li, button {
     color: #fff;
 }
 
+.groupBtn {
+    border: 1px solid #072f5f;
+}
+
+.groupBtn:hover {
+    background-color: #072f5fc5;
+    color: #fff;
+}
+
 .main-heading {
     max-width: 1400px;
 }
