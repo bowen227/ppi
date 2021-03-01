@@ -3,7 +3,6 @@
 
 // PPI API ROUTE
 // const PPI_API = 'http://localhost:3000/api'
-const PPI_API = 'http://ppi-playerpower.s3-website-us-east-1.amazonaws.com/api'
 
 // ARRAY OF PLAYERS
 let players = []
@@ -13,10 +12,10 @@ let players_group_three = []
 let players_group_four = []
 
 // ARRAY OF NAMES TO CREATE PLAYERS FOR PLAYER ARRAY
-// const firstNames = ['Tom', 'Easton', 'Max', 'Leigh', 'Samuel', 'Doug', 'Peter', 'Bradley', 'Chad', 'Charles']
-// const lastNames = ['Owen', 'Golliher', 'Spears', 'Martin', 'Manning', 'Wells', 'Sokohl', 'Reece', 'Smith', 'Coulter']
-// const positions = ['Infield', 'Outfield']
-// const groups = ['6u', '8u', '10u', '12u']
+const firstNames = ['Tom', 'Easton', 'Max', 'Leigh', 'Samuel', 'Doug', 'Peter', 'Bradley', 'Chad', 'Charles']
+const lastNames = ['Owen', 'Golliher', 'Spears', 'Martin', 'Manning', 'Wells', 'Sokohl', 'Reece', 'Smith', 'Coulter']
+const positions = ['Infield', 'Outfield']
+const groups = ['6u', '8u', '10u', '12u']
 
 // TEAM PLAYER POWER INDEX
 let teamPPI = 0
@@ -40,30 +39,30 @@ let pList = document.getElementById("player-list")
 let searchGroup = 'All'
 
 // CREATE RANDOM PLAYERS
-// function createPlayers() {
-//     for (let index = 0; index < 100 ; index++) {
-//         const fistNameIndex = Math.floor(Math.random() * 10)
-//         const element = firstNames[fistNameIndex];
-//         const lastNameIndex = Math.floor(Math.random() * 10)
-//         const groupIndex = Math.floor(Math.random() * 4)
-//         const pIndex = Math.floor(Math.random() * 2)
+function createPlayers() {
+    for (let index = 0; index < 100 ; index++) {
+        const fistNameIndex = Math.floor(Math.random() * 10)
+        const element = firstNames[fistNameIndex];
+        const lastNameIndex = Math.floor(Math.random() * 10)
+        const groupIndex = Math.floor(Math.random() * 4)
+        const pIndex = Math.floor(Math.random() * 2)
         
-//         const p = {
-//             fName: element,
-//             lName: lastNames[lastNameIndex],
-//             position: positions[pIndex],
-//             group: groups[groupIndex],
-//             PPI: parseFloat((Math.random() / 100 * 5) * 100).toFixed(2),
-//             profileImg: null
-//         }
+        const p = {
+            fName: element,
+            lName: lastNames[lastNameIndex],
+            position: positions[pIndex],
+            group: groups[groupIndex],
+            PPI: parseFloat((Math.random() / 100 * 5) * 100).toFixed(2),
+            profileImg: null
+        }
 
-//         players.push(p)
-//     }
+        players.push(p)
+    }
     
-//     groupPlayers()
-// }
+    groupPlayers()
+}
 
-// createPlayers()
+createPlayers()
 
 function groupPlayers() {
     players.map(p => {
@@ -90,15 +89,23 @@ function groupPlayers() {
     })
 }
 
-async function displayGroups() {
-    fetch(`${PPI_API}/groups`)
-    .then(res => res.json())
-    .then(data => {
-        data.forEach(g => {
-            gList.innerHTML += `
-            <button class="btn btn-outline-dark groupBtn" onclick="displayPlayers(this)">${g}</button>
-            `
-        })
+// async function displayGroups() {
+//     fetch(`${PPI_API}/groups`)
+//     .then(res => res.json())
+//     .then(data => {
+//         data.forEach(g => {
+//             gList.innerHTML += `
+//             <button class="btn btn-outline-dark groupBtn" onclick="displayPlayers(this)">${g}</button>
+//             `
+//         })
+//     })
+// }
+
+function displayGroups() {
+    groups.forEach(g => {
+        gList.innerHTML += `
+        <button class="btn btn-outline-dark groupBtn" onclick="displayPlayers(this)">${g}</button>
+        `
     })
 }
 
@@ -112,255 +119,256 @@ function displayPlayers(searchGroup) {
         }
     }
 
-    if (searchGroup.innerHTML == 'All') {
-        fetch(`${PPI_API}/all_players`)
-        .then(res => res.json())
-        .then(data => {
-            data.forEach(p => {
-                pList.innerHTML += `
-                <li class="list-group-item">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
-                        </div>
-                        <div class="col">
-                            ${p.fName} ${p.lName}
-                        </div>
-                        <div class="col">
-                            ${p.group}
-                        </div>
-                        <div class="col">
-                            ${p.PPI}
-                        </div>
-                    </div>
-                </li>
-                `
-            })
-        })
-    }
-
-    if (searchGroup.innerHTML == '6u') {
-        fetch(`${PPI_API}/6u_players`)
-        .then(res => res.json())
-        .then(data => {
-            data.forEach(p => {
-                pList.innerHTML += `
-                <li class="list-group-item">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
-                        </div>
-                        <div class="col">
-                            ${p.fName} ${p.lName}
-                        </div>
-                        <div class="col">
-                            ${p.group}
-                        </div>
-                        <div class="col">
-                            ${p.PPI}
-                        </div>
-                    </div>
-                </li>
-                `
-            })
-        })
-    }
-
-    if (searchGroup.innerHTML == '8u') {
-        fetch(`${PPI_API}/8u_players`)
-        .then(res => res.json())
-        .then(data => {
-            data.forEach(p => {
-                pList.innerHTML += `
-                <li class="list-group-item">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
-                        </div>
-                        <div class="col">
-                            ${p.fName} ${p.lName}
-                        </div>
-                        <div class="col">
-                            ${p.group}
-                        </div>
-                        <div class="col">
-                            ${p.PPI}
-                        </div>
-                    </div>
-                </li>
-                `
-            })
-        })
-    }
-
-    if (searchGroup.innerHTML == '10u') {
-        fetch(`${PPI_API}/10u_players`)
-        .then(res => res.json())
-        .then(data => {
-            data.forEach(p => {
-                pList.innerHTML += `
-                <li class="list-group-item">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
-                        </div>
-                        <div class="col">
-                            ${p.fName} ${p.lName}
-                        </div>
-                        <div class="col">
-                            ${p.group}
-                        </div>
-                        <div class="col">
-                            ${p.PPI}
-                        </div>
-                    </div>
-                </li>
-                `
-            })
-        })
-    }
-
-    if (searchGroup.innerHTML == '12u') {
-        fetch(`${PPI_API}/12u_players`)
-        .then(res => res.json())
-        .then(data => {
-            data.forEach(p => {
-                pList.innerHTML += `
-                <li class="list-group-item">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
-                        </div>
-                        <div class="col">
-                            ${p.fName} ${p.lName}
-                        </div>
-                        <div class="col">
-                            ${p.group}
-                        </div>
-                        <div class="col">
-                            ${p.PPI}
-                        </div>
-                    </div>
-                </li>
-                `
-            })
-        })
-    }
-
     // if (searchGroup.innerHTML == 'All') {
-    //     players.forEach(p => {
-    //         pList.innerHTML += `
-    //         <li class="list-group-item">
-    //             <div class="row align-items-center">
-    //                 <div class="col">
-    //                     <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
+    //     fetch(`${PPI_API}/all_players`)
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         data.forEach(p => {
+    //             pList.innerHTML += `
+    //             <li class="list-group-item">
+    //                 <div class="row align-items-center">
+    //                     <div class="col">
+    //                         <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
+    //                     </div>
+    //                     <div class="col">
+    //                         ${p.fName} ${p.lName}
+    //                     </div>
+    //                     <div class="col">
+    //                         ${p.group}
+    //                     </div>
+    //                     <div class="col">
+    //                         ${p.PPI}
+    //                     </div>
     //                 </div>
-    //                 <div class="col">
-    //                     ${p.fName} ${p.lName}
-    //                 </div>
-    //                 <div class="col">
-    //                     ${p.group}
-    //                 </div>
-    //                 <div class="col">
-    //                     ${p.PPI}
-    //                 </div>
-    //             </div>
-    //         </li>
-    //         `
+    //             </li>
+    //             `
+    //         })
     //     })
     // }
 
     // if (searchGroup.innerHTML == '6u') {
-    //     players_group_one.forEach(p => {
-    //         pList.innerHTML += `
-    //         <li class="list-group-item">
-    //             <div class="row align-items-center">
-    //                 <div class="col">
-    //                     <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
+    //     fetch(`${PPI_API}/6u_players`)
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         data.forEach(p => {
+    //             pList.innerHTML += `
+    //             <li class="list-group-item">
+    //                 <div class="row align-items-center">
+    //                     <div class="col">
+    //                         <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
+    //                     </div>
+    //                     <div class="col">
+    //                         ${p.fName} ${p.lName}
+    //                     </div>
+    //                     <div class="col">
+    //                         ${p.group}
+    //                     </div>
+    //                     <div class="col">
+    //                         ${p.PPI}
+    //                     </div>
     //                 </div>
-    //                 <div class="col">
-    //                     ${p.fName} ${p.lName}
-    //                 </div>
-    //                 <div class="col">
-    //                     ${p.group}
-    //                 </div>
-    //                 <div class="col">
-    //                     ${p.PPI}
-    //                 </div>
-    //             </div>
-    //         </li>
-    //         `
+    //             </li>
+    //             `
+    //         })
     //     })
     // }
 
     // if (searchGroup.innerHTML == '8u') {
-    //     players_group_two.forEach(p => {
-    //         pList.innerHTML += `
-    //         <li class="list-group-item">
-    //             <div class="row align-items-center">
-    //                 <div class="col">
-    //                     <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
+    //     fetch(`${PPI_API}/8u_players`)
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         data.forEach(p => {
+    //             pList.innerHTML += `
+    //             <li class="list-group-item">
+    //                 <div class="row align-items-center">
+    //                     <div class="col">
+    //                         <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
+    //                     </div>
+    //                     <div class="col">
+    //                         ${p.fName} ${p.lName}
+    //                     </div>
+    //                     <div class="col">
+    //                         ${p.group}
+    //                     </div>
+    //                     <div class="col">
+    //                         ${p.PPI}
+    //                     </div>
     //                 </div>
-    //                 <div class="col">
-    //                     ${p.fName} ${p.lName}
-    //                 </div>
-    //                 <div class="col">
-    //                     ${p.group}
-    //                 </div>
-    //                 <div class="col">
-    //                     ${p.PPI}
-    //                 </div>
-    //             </div>
-    //         </li>
-    //         `
+    //             </li>
+    //             `
+    //         })
     //     })
     // }
 
     // if (searchGroup.innerHTML == '10u') {
-    //     players_group_three.forEach(p => {
-    //         pList.innerHTML += `
-    //         <li class="list-group-item">
-    //             <div class="row align-items-center">
-    //                 <div class="col">
-    //                     <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
+    //     fetch(`${PPI_API}/10u_players`)
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         data.forEach(p => {
+    //             pList.innerHTML += `
+    //             <li class="list-group-item">
+    //                 <div class="row align-items-center">
+    //                     <div class="col">
+    //                         <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
+    //                     </div>
+    //                     <div class="col">
+    //                         ${p.fName} ${p.lName}
+    //                     </div>
+    //                     <div class="col">
+    //                         ${p.group}
+    //                     </div>
+    //                     <div class="col">
+    //                         ${p.PPI}
+    //                     </div>
     //                 </div>
-    //                 <div class="col">
-    //                     ${p.fName} ${p.lName}
-    //                 </div>
-    //                 <div class="col">
-    //                     ${p.group}
-    //                 </div>
-    //                 <div class="col">
-    //                     ${p.PPI}
-    //                 </div>
-    //             </div>
-    //         </li>
-    //         `
+    //             </li>
+    //             `
+    //         })
     //     })
     // }
 
     // if (searchGroup.innerHTML == '12u') {
-    //     players_group_four.forEach(p => {
-    //         pList.innerHTML += `
-    //         <li class="list-group-item">
-    //             <div class="row align-items-center">
-    //                 <div class="col">
-    //                     <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
+    //     fetch(`${PPI_API}/12u_players`)
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         data.forEach(p => {
+    //             pList.innerHTML += `
+    //             <li class="list-group-item">
+    //                 <div class="row align-items-center">
+    //                     <div class="col">
+    //                         <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
+    //                     </div>
+    //                     <div class="col">
+    //                         ${p.fName} ${p.lName}
+    //                     </div>
+    //                     <div class="col">
+    //                         ${p.group}
+    //                     </div>
+    //                     <div class="col">
+    //                         ${p.PPI}
+    //                     </div>
     //                 </div>
-    //                 <div class="col">
-    //                     ${p.fName} ${p.lName}
-    //                 </div>
-    //                 <div class="col">
-    //                     ${p.group}
-    //                 </div>
-    //                 <div class="col">
-    //                     ${p.PPI}
-    //                 </div>
-    //             </div>
-    //         </li>
-    //         `
+    //             </li>
+    //             `
+    //         })
     //     })
     // }
+
+    // OLD FUNCTIONS
+    if (searchGroup.innerHTML == 'All') {
+        players.forEach(p => {
+            pList.innerHTML += `
+            <li class="list-group-item">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
+                    </div>
+                    <div class="col">
+                        ${p.fName} ${p.lName}
+                    </div>
+                    <div class="col">
+                        ${p.group}
+                    </div>
+                    <div class="col">
+                        ${p.PPI}
+                    </div>
+                </div>
+            </li>
+            `
+        })
+    }
+
+    if (searchGroup.innerHTML == '6u') {
+        players_group_one.forEach(p => {
+            pList.innerHTML += `
+            <li class="list-group-item">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
+                    </div>
+                    <div class="col">
+                        ${p.fName} ${p.lName}
+                    </div>
+                    <div class="col">
+                        ${p.group}
+                    </div>
+                    <div class="col">
+                        ${p.PPI}
+                    </div>
+                </div>
+            </li>
+            `
+        })
+    }
+
+    if (searchGroup.innerHTML == '8u') {
+        players_group_two.forEach(p => {
+            pList.innerHTML += `
+            <li class="list-group-item">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
+                    </div>
+                    <div class="col">
+                        ${p.fName} ${p.lName}
+                    </div>
+                    <div class="col">
+                        ${p.group}
+                    </div>
+                    <div class="col">
+                        ${p.PPI}
+                    </div>
+                </div>
+            </li>
+            `
+        })
+    }
+
+    if (searchGroup.innerHTML == '10u') {
+        players_group_three.forEach(p => {
+            pList.innerHTML += `
+            <li class="list-group-item">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
+                    </div>
+                    <div class="col">
+                        ${p.fName} ${p.lName}
+                    </div>
+                    <div class="col">
+                        ${p.group}
+                    </div>
+                    <div class="col">
+                        ${p.PPI}
+                    </div>
+                </div>
+            </li>
+            `
+        })
+    }
+
+    if (searchGroup.innerHTML == '12u') {
+        players_group_four.forEach(p => {
+            pList.innerHTML += `
+            <li class="list-group-item">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
+                    </div>
+                    <div class="col">
+                        ${p.fName} ${p.lName}
+                    </div>
+                    <div class="col">
+                        ${p.group}
+                    </div>
+                    <div class="col">
+                        ${p.PPI}
+                    </div>
+                </div>
+            </li>
+            `
+        })
+    }
 }
 
 function searchPlayer() {
@@ -372,59 +380,60 @@ function searchPlayer() {
         }
     }
 
-    if (searchTerm == '') {
-        return
-    } else {
-        fetch(`${PPI_API}/search/${searchTerm}`)
-        .then(res => res.json())
-        .then(data => {
-            data.forEach(p => {
-                pList.innerHTML += `
-                <li class="list-group-item">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
-                        </div>
-                        <div class="col">
-                            ${p.fName} ${p.lName}
-                        </div>
-                        <div class="col">
-                            ${p.group}
-                        </div>
-                        <div class="col">
-                            ${p.PPI}
-                        </div>
-                    </div>
-                </li>
-                `
-            })
-        })
-    }
-
-    // for (let index = 0; index < players.length; index++) {
-    //     const element = players[index];
-
-    //     const name = `${element.fName} ${element.lName}`
-        
-    //     if (name.toLowerCase().includes(searchTerm)) {
-    //         pList.innerHTML += `
-    //         <li class="list-group-item">
-    //             <div class="row align-items-center">
-    //                 <div class="col">
-    //                     <img width="50px" height="auto" src=${element.profileImg ? element.profileImg : "../img/default_user.png"} />
+    // if (searchTerm == '') {
+    //     return
+    // } else {
+    //     fetch(`${PPI_API}/search/${searchTerm}`)
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         data.forEach(p => {
+    //             pList.innerHTML += `
+    //             <li class="list-group-item">
+    //                 <div class="row align-items-center">
+    //                     <div class="col">
+    //                         <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
+    //                     </div>
+    //                     <div class="col">
+    //                         ${p.fName} ${p.lName}
+    //                     </div>
+    //                     <div class="col">
+    //                         ${p.group}
+    //                     </div>
+    //                     <div class="col">
+    //                         ${p.PPI}
+    //                     </div>
     //                 </div>
-    //                 <div class="col">
-    //                     ${element.fName} ${element.lName}
-    //                 </div>
-    //                 <div class="col">
-    //                     ${element.group}
-    //                 </div>
-    //                 <div class="col">
-    //                     ${element.PPI}
-    //                 </div>
-    //             </div>
-    //         </li>
-    //         `
-    //     }
+    //             </li>
+    //             `
+    //         })
+    //     })
     // }
+
+    // OLD FUNCTIONS
+    for (let index = 0; index < players.length; index++) {
+        const element = players[index];
+
+        const name = `${element.fName} ${element.lName}`
+        
+        if (name.toLowerCase().includes(searchTerm)) {
+            pList.innerHTML += `
+            <li class="list-group-item">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <img width="50px" height="auto" src=${element.profileImg ? element.profileImg : "../img/default_user.png"} />
+                    </div>
+                    <div class="col">
+                        ${element.fName} ${element.lName}
+                    </div>
+                    <div class="col">
+                        ${element.group}
+                    </div>
+                    <div class="col">
+                        ${element.PPI}
+                    </div>
+                </div>
+            </li>
+            `
+        }
+    }
 }
