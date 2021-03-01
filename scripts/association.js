@@ -225,7 +225,7 @@ function displayPlayers(searchGroup) {
 }
 
 function searchPlayer() {
-    const searchTerm = document.getElementById('searchPlayer')
+    const searchTerm = document.getElementById('searchPlayer').value.toLowerCase()
 
     if (pList.innerHTML.length > 0) {
         while (pList.firstChild) {
@@ -238,7 +238,7 @@ function searchPlayer() {
 
         const name = `${element.fName} ${element.lName}`
         
-        if (name.toLowerCase().includes(searchTerm.value.toLowerCase())) {
+        if (name.toLowerCase().includes(searchTerm)) {
             pList.innerHTML += `
             <li class="list-group-item">
                 <div class="row align-items-center">
