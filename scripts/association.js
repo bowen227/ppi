@@ -2,7 +2,8 @@
 /////// ASSOCIATION.HTML FUNCTIONS BELOW ///////
 
 // PPI API ROUTE
-const PPI_API = 'http://localhost:3000/api'
+// const PPI_API = 'http://localhost:3000/api'
+const PPI_API = 'http://ppi-playerpower.s3-website-us-east-1.amazonaws.com/api'
 
 // ARRAY OF PLAYERS
 let players = []
@@ -39,28 +40,28 @@ let pList = document.getElementById("player-list")
 let searchGroup = 'All'
 
 // CREATE RANDOM PLAYERS
-function createPlayers() {
-    for (let index = 0; index < 100 ; index++) {
-        const fistNameIndex = Math.floor(Math.random() * 10)
-        const element = firstNames[fistNameIndex];
-        const lastNameIndex = Math.floor(Math.random() * 10)
-        const groupIndex = Math.floor(Math.random() * 4)
-        const pIndex = Math.floor(Math.random() * 2)
+// function createPlayers() {
+//     for (let index = 0; index < 100 ; index++) {
+//         const fistNameIndex = Math.floor(Math.random() * 10)
+//         const element = firstNames[fistNameIndex];
+//         const lastNameIndex = Math.floor(Math.random() * 10)
+//         const groupIndex = Math.floor(Math.random() * 4)
+//         const pIndex = Math.floor(Math.random() * 2)
         
-        const p = {
-            fName: element,
-            lName: lastNames[lastNameIndex],
-            position: positions[pIndex],
-            group: groups[groupIndex],
-            PPI: parseFloat((Math.random() / 100 * 5) * 100).toFixed(2),
-            profileImg: null
-        }
+//         const p = {
+//             fName: element,
+//             lName: lastNames[lastNameIndex],
+//             position: positions[pIndex],
+//             group: groups[groupIndex],
+//             PPI: parseFloat((Math.random() / 100 * 5) * 100).toFixed(2),
+//             profileImg: null
+//         }
 
-        players.push(p)
-    }
+//         players.push(p)
+//     }
     
-    groupPlayers()
-}
+//     groupPlayers()
+// }
 
 // createPlayers()
 
@@ -87,10 +88,6 @@ function groupPlayers() {
                 break;
         }
     })
-    // console.log(players_group_one)
-    // console.log(players_group_two)
-    // console.log(players_group_three)
-    // console.log(players_group_four)
 }
 
 async function displayGroups() {
@@ -375,30 +372,34 @@ function searchPlayer() {
         }
     }
 
-    fetch(`${PPI_API}/search/${searchTerm}`)
-    .then(res => res.json())
-    .then(data => {
-        data.forEach(p => {
-            pList.innerHTML += `
-            <li class="list-group-item">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
+    if (searchTerm == '') {
+        return
+    } else {
+        fetch(`${PPI_API}/search/${searchTerm}`)
+        .then(res => res.json())
+        .then(data => {
+            data.forEach(p => {
+                pList.innerHTML += `
+                <li class="list-group-item">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
+                        </div>
+                        <div class="col">
+                            ${p.fName} ${p.lName}
+                        </div>
+                        <div class="col">
+                            ${p.group}
+                        </div>
+                        <div class="col">
+                            ${p.PPI}
+                        </div>
                     </div>
-                    <div class="col">
-                        ${p.fName} ${p.lName}
-                    </div>
-                    <div class="col">
-                        ${p.group}
-                    </div>
-                    <div class="col">
-                        ${p.PPI}
-                    </div>
-                </div>
-            </li>
-            `
+                </li>
+                `
+            })
         })
-    })
+    }
 
     // for (let index = 0; index < players.length; index++) {
     //     const element = players[index];

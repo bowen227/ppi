@@ -100,13 +100,17 @@ app.get('/api/search/:player', (req, res) => {
     const match = []
     const searchName = req.params.player
 
-    players.forEach(player => {
-        const name = `${player.fName} ${player.lName}`
-        if (name.toLowerCase().includes(searchName)) {
-            match.push(player)
-        }
-    })
-    res.json(match)
+    if (searchName == '') {
+        return
+    } else {
+        players.forEach(player => {
+            const name = `${player.fName} ${player.lName}`
+            if (name.toLowerCase().includes(searchName)) {
+                match.push(player)
+            }
+        })
+        res.json(match)
+    }
 })
 
 app.listen(
