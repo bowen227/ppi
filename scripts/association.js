@@ -258,7 +258,7 @@ function displayPlayers(searchGroup) {
     if (searchGroup.innerHTML == 'All') {
         players.forEach(p => {
             pList.innerHTML += `
-            <li class="list-group-item">
+            <li class="list-group-item player">
                 <div class="row align-items-center">
                     <div class="col">
                         <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
@@ -281,7 +281,7 @@ function displayPlayers(searchGroup) {
     if (searchGroup.innerHTML == '6u') {
         players_group_one.forEach(p => {
             pList.innerHTML += `
-            <li class="list-group-item">
+            <li class="list-group-item player">
                 <div class="row align-items-center">
                     <div class="col">
                         <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
@@ -304,7 +304,7 @@ function displayPlayers(searchGroup) {
     if (searchGroup.innerHTML == '8u') {
         players_group_two.forEach(p => {
             pList.innerHTML += `
-            <li class="list-group-item">
+            <li class="list-group-item player">
                 <div class="row align-items-center">
                     <div class="col">
                         <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
@@ -327,7 +327,7 @@ function displayPlayers(searchGroup) {
     if (searchGroup.innerHTML == '10u') {
         players_group_three.forEach(p => {
             pList.innerHTML += `
-            <li class="list-group-item">
+            <li class="list-group-item player">
                 <div class="row align-items-center">
                     <div class="col">
                         <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
@@ -350,7 +350,7 @@ function displayPlayers(searchGroup) {
     if (searchGroup.innerHTML == '12u') {
         players_group_four.forEach(p => {
             pList.innerHTML += `
-            <li class="list-group-item">
+            <li class="list-group-item player">
                 <div class="row align-items-center">
                     <div class="col">
                         <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
@@ -417,7 +417,7 @@ function searchPlayer() {
         
         if (name.toLowerCase().includes(searchTerm)) {
             pList.innerHTML += `
-            <li class="list-group-item">
+            <li class="list-group-item player">
                 <div class="row align-items-center">
                     <div class="col">
                         <img width="50px" height="auto" src=${element.profileImg ? element.profileImg : "../img/default_user.png"} />
