@@ -9,6 +9,16 @@ const firstNames = ['Tom', 'Easton', 'Max', 'Leigh', 'Samuel', 'Doug', 'Peter', 
 const lastNames = ['Owen', 'Golliher', 'Spears', 'Martin', 'Manning', 'Wells', 'Sokohl', 'Reece', 'Smith', 'Coulter']
 const positions = ['Infield', 'Outfield']
 
+// ARRAY OF EVENTS
+const uEvents = [
+    {date: "3/15/2021", title: "Season officially start"},
+    {date: "3/22/2021", title: "vs Braves"},
+    {date: "3/24/2021", title: "vs Yankees"},
+    {date: "3/26/2021", title: "vs Bears"},
+    {date: "3/28/2021", title: "vs Titans"},
+    {date: "4/02/2021", title: "vs Braves"}
+]
+
 // TEAM PLAYER POWER INDEX
 let teamPPI = 0
 
@@ -77,22 +87,77 @@ displayPlayers()
 // DISPLAY COACH NAME
 const displayName = document.getElementById('coach-association').children[0]
 
-displayName.innerHTML = `Coach ${coach.lastName}`
+displayName.innerHTML = `Coach ${coach.lastName} <i class="fa fa-pencil" onclick="updateCoachDetails()"></i>`
 
 // DISPLAY TEAM NAME
 const teamName = document.getElementById('coach-association').children[1]
 
 teamName.innerHTML = `${team ? team : `<a href="#" onclick="addTeam()">Add Team Name</a>`}`
 
+// DISPLAY EVENTS
+function showEvents() {
+    const eDiv = document.getElementById('upcomingEvents')
+    const showMore = document.getElementById('moreBtn')
+
+    if (eDiv.innerHTML.length >0) {
+        while (eDiv.firstChild) {
+            eDiv.removeChild(eDiv.firstChild)
+        }
+    }
+
+    for (let index = 0; index < 4; index++) {
+        const element = uEvents[index];
+        eDiv.innerHTML += `
+        <li class="list-group-item">
+            ${element.date} ${element.title}
+        </li>
+        `
+    }
+
+    showMore.innerHTML = `
+    <a href="#" onclick="showAllEvents()">More</a>
+    `
+}
+
+showEvents()
+
+function showAllEvents() {
+    const eDiv = document.getElementById('upcomingEvents')
+    const showLess = document.getElementById('moreBtn')
+
+    if (eDiv.innerHTML.length > 0) {
+        while (eDiv.firstChild) {
+            eDiv.removeChild(eDiv.firstChild)
+        }
+    }
+
+    for (let index = 0; index < uEvents.length; index++) {
+        const element = uEvents[index];
+        eDiv.innerHTML += `
+        <li class="list-group-item">
+            ${element.date} ${element.title}
+        </li>
+        `
+    }
+
+    showLess.innerHTML = `
+    <a href="#" onclick="showEvents()">Less</a>
+    `
+}
+
 // UPDATE COACH DETAILS
 function updateCoachDetails() {
-    const fName = document.getElementById('firstName')
-    const lName = document.getElementById('lastName')
+    displayName.innerHTML = `
+    <input type="text" id="editLastName" placeHolder=${coach.lastName} />
+    <button class="btn btn-primary" onclick="updateCoachLastName()">Save</button>
+    `
+}
 
-    coach = {
-        firstName: fName.value,
-        lastName: lName.value
-    }
+function updateCoachLastName() {
+    const updatedName = document.getElementById('editLastName').value
+    coach.lastName = updatedName
+
+    displayName.innerHTML = `Coach ${coach.lastName} <i class="fa fa-pencil" onclick="updateCoachDetails()"></i>`
 }
 
 // ADD TEAM NAME
