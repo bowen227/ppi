@@ -16,7 +16,7 @@
 
     <title>PPI: Player Power Index - Dashboard</title>
 </head>
-<body>
+<body  onload="loadEvents()">
     <nav class="navbar px-md-5">
         <a class="navbar-brand d-flex align-items-center" href="index.html">
             <img src="../img/PPI_logo_blue.png" width="60" height="60" />
@@ -46,7 +46,7 @@
 
     <div class="container">
         <div class="row">
-            <div id="coach-association" class="col-sm-12 py-3 mt-4">
+            <div id="coach-association" class="col-sm-12 col-md-6 py-3 mt-4">
                 <h4></h4>
                 <p></p>
             </div>
@@ -181,5 +181,16 @@
 
     <!-- Custom scripts -->
     <script src="/scripts/main.js"></script>
+
+    <script>
+        window.onload = function loadEvents() {
+            // setTimeout(() => {
+            //     let t = performance.timing
+            //     console.log(t.loadEventEnd)
+            // }, 0)
+            showEvents()
+            displayPlayers()
+        }
+    </script>
 </body>
 </html>

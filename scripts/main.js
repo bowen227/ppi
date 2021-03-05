@@ -82,8 +82,6 @@ function displayPlayers() {
     });
 }
 
-displayPlayers()
-
 // DISPLAY COACH NAME
 const displayName = document.getElementById('coach-association').children[0]
 
@@ -118,8 +116,6 @@ function showEvents() {
     <a href="#" onclick="showAllEvents()">More</a>
     `
 }
-
-showEvents()
 
 function showAllEvents() {
     const eDiv = document.getElementById('upcomingEvents')
