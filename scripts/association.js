@@ -62,8 +62,6 @@ function createPlayers() {
     groupPlayers()
 }
 
-createPlayers()
-
 function groupPlayers() {
     players.map(p => {
         switch (p.group) {
@@ -108,8 +106,6 @@ function displayGroups() {
         `
     })
 }
-
-displayGroups()
 
 function displayPlayers(searchGroup) {
 

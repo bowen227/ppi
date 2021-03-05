@@ -16,7 +16,7 @@
 
     <title>PPI: Player Power Index - Association</title>
 </head>
-<body>
+<body onload="loadData()">
     <nav class="navbar px-md-5">
         <a class="navbar-brand d-flex align-items-center" href="index.html">
             <img src="../img/PPI_logo_blue.png" width="60" height="60" />
@@ -110,6 +110,13 @@
 
     <!-- Custom scripts -->
     <script src="/scripts/association.js"></script>
+
+    <script>
+        window.onload = () => {
+            createPlayers()
+            displayGroups()
+        }
+    </script>
     
 </body>
 </html>
