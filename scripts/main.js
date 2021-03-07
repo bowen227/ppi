@@ -59,7 +59,7 @@ createPlayers()
 function displayPlayers() {
     players.forEach(element => {
         pList.innerHTML += `
-        <li id="list-item" class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
+        <li role="button" id="list-item" class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
             <div class="row">
                 <div class="col">
                     <img alt="user profile image" src=${element.profileImg ? element.profileImg : `../img/default_user.png`} width="40" height="40" />
