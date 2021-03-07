@@ -1,8 +1,0 @@
-PPI: Player Power Index
-
-1. Introduction
-Generate a player power index for tryouts, camps and player development. Save time drafting players and creating balanced teams. Youth associations can add players, add coaches, have coaches evaluate players and set upcoming events. Coaches can add players to their team, edit team name, evaluate players, set upcoming events and set lineups. 
-2. User Interface Design and Prototype
-I wanted a clean straight forward site. Simple to use and without clutter.
-3. Navigation Structure
-Navigation limits amount of clicks to get to destination. Typical flow would be landingPage -> Login -> Dashboard -> PlayerDetails
