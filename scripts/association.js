@@ -356,6 +356,7 @@ function displayPlayers(searchGroup) {
                 <div class="row align-items-center">
                     <div class="col">
                         <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
+                    </div>
                     <div class="col">
                         ${p.fName}
                     </div>
