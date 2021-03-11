@@ -274,18 +274,21 @@ function displayPlayers(searchGroup) {
     if (searchGroup.innerHTML == 'All') {
         players.forEach(p => {
             pList.innerHTML += `
-            <li class="list-group-item player">
+            <li class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
                 <div class="row align-items-center">
                     <div class="col">
                         <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
                     </div>
                     <div class="col">
-                        ${p.fName} ${p.lName}
+                        ${p.fName}
+                    </div>
+                    <div class="col d-none d-md-block align-self-center">
+                        ${p.lName}
                     </div>
                     <div class="col">
                         ${p.group}
                     </div>
-                    <div class="col">
+                    <div class="col d-none d-md-block align-self-center">
                         ${p.PPI}
                     </div>
                 </div>
@@ -297,18 +300,21 @@ function displayPlayers(searchGroup) {
     if (searchGroup.innerHTML == '6u') {
         players_group_one.forEach(p => {
             pList.innerHTML += `
-            <li class="list-group-item player">
+            <li class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
                 <div class="row align-items-center">
                     <div class="col">
                         <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
                     </div>
                     <div class="col">
-                        ${p.fName} ${p.lName}
+                        ${p.fName}
+                    </div>
+                    <div class="col d-none d-md-block align-self-center">
+                        ${p.lName}
                     </div>
                     <div class="col">
                         ${p.group}
                     </div>
-                    <div class="col">
+                    <div class="col d-none d-md-block align-self-center">
                         ${p.PPI}
                     </div>
                 </div>
@@ -320,18 +326,21 @@ function displayPlayers(searchGroup) {
     if (searchGroup.innerHTML == '8u') {
         players_group_two.forEach(p => {
             pList.innerHTML += `
-            <li class="list-group-item player">
+            <li class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
                 <div class="row align-items-center">
                     <div class="col">
                         <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
                     </div>
                     <div class="col">
-                        ${p.fName} ${p.lName}
+                        ${p.fName}
+                    </div>
+                    <div class="col d-none d-md-block align-self-center">
+                        ${p.lName}
                     </div>
                     <div class="col">
                         ${p.group}
                     </div>
-                    <div class="col">
+                    <div class="col d-none d-md-block align-self-center">
                         ${p.PPI}
                     </div>
                 </div>
@@ -343,18 +352,20 @@ function displayPlayers(searchGroup) {
     if (searchGroup.innerHTML == '10u') {
         players_group_three.forEach(p => {
             pList.innerHTML += `
-            <li class="list-group-item player">
+            <li class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
                 <div class="row align-items-center">
                     <div class="col">
                         <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
-                    </div>
                     <div class="col">
-                        ${p.fName} ${p.lName}
+                        ${p.fName}
+                    </div>
+                    <div class="col d-none d-md-block align-self-center">
+                        ${p.lName}
                     </div>
                     <div class="col">
                         ${p.group}
                     </div>
-                    <div class="col">
+                    <div class="col d-none d-md-block align-self-center">
                         ${p.PPI}
                     </div>
                 </div>
@@ -366,18 +377,21 @@ function displayPlayers(searchGroup) {
     if (searchGroup.innerHTML == '12u') {
         players_group_four.forEach(p => {
             pList.innerHTML += `
-            <li class="list-group-item player">
+            <li class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
                 <div class="row align-items-center">
                     <div class="col">
                         <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
                     </div>
                     <div class="col">
-                        ${p.fName} ${p.lName}
+                        ${p.fName}
+                    </div>
+                    <div class="col d-none d-md-block align-self-center">
+                        ${p.lName}
                     </div>
                     <div class="col">
                         ${p.group}
                     </div>
-                    <div class="col">
+                    <div class="col d-none d-md-block align-self-center">
                         ${p.PPI}
                     </div>
                 </div>
@@ -433,18 +447,21 @@ function searchPlayer() {
         
         if (name.toLowerCase().includes(searchTerm)) {
             pList.innerHTML += `
-            <li class="list-group-item player">
+            <li class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
                 <div class="row align-items-center">
                     <div class="col">
                         <img width="50px" height="auto" src=${element.profileImg ? element.profileImg : "../img/default_user.png"} />
                     </div>
+                    <div class="col d-none d-md-block align-self-center">
+                        ${element.fName}
+                    </div>
                     <div class="col">
-                        ${element.fName} ${element.lName}
+                        ${element.lName}
                     </div>
                     <div class="col">
                         ${element.group}
                     </div>
-                    <div class="col">
+                    <div class="col d-none d-md-block align-self-center">
                         ${element.PPI}
                     </div>
                 </div>
@@ -526,4 +543,31 @@ function addPlayerToTeam(c) {
         selectedPlayers.push(one[0])
         one.shift()
     }
+}
+
+// GO TO PLAYERDETAILS.HTML AND SET CURRENT PLAYER
+function gotoPlayerDetails(t, e) {
+    const profileImg = t.children[0].children[0].children[0].src
+    const firstName = t.children[0].children[1].innerHTML
+    const lastName = t.children[0].children[2].innerHTML
+    const position = t.children[0].children[3].innerHTML
+    const PPI = t.children[0].children[4].innerHTML
+
+    const sPlayer = {
+        profileImg: profileImg,
+        fName: firstName.trim(),
+        lName: lastName.trim(),
+        position: position.trim(),
+        PPI: PPI.trim()
+    }
+
+    selectedPlayer = sPlayer
+
+    document.location.href = `
+    playerDetails.html?img=${selectedPlayer.profileImg}
+    &fName=${selectedPlayer.fName}
+    &lName=${selectedPlayer.lName}
+    &position=${selectedPlayer.position}
+    &ppi=${selectedPlayer.PPI}
+    `
 }

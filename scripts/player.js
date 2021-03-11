@@ -236,3 +236,7 @@ function newEval() {
 
     console.log(e)
 }
+
+function goBack() {
+    window.history.back()
+}
