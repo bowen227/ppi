@@ -33,7 +33,7 @@
             <li class="nav-item mr-md-4" data-toggle="modal" data-target="#newCoach">
               <a class="nav-link" href="#">Add Coach</a>
             </li>
-            <li class="nav-item mr-md-4" onclick="openSettings()">
+            <li class="nav-item mr-md-4" data-toggle="modal" data-target="#settings">
                 <a class="nav-link" href="#">Settings</a>
               </li>
             <li class="nav-item mt-3">
@@ -190,6 +190,104 @@
                         <input type="text" id="cLastName" class="form-control" />
                     </div>
                 </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addCoach()">Save</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL FOR ADDING SETTINGS -->
+    <div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Settings</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <ul class="list-group-flush">
+                                <li 
+                                    class="list-group-item border-0 setting"
+                                    data-toggle="collapse"
+                                    href="#user"
+                                    role="button"
+                                    aria-expanded="false"
+                                    aria-controls="user"
+                                >User</li>
+                                <li 
+                                    class="list-group-item border-0 setting"
+                                    data-toggle="collapse"
+                                    href="#coaches"
+                                    role="button"
+                                    aria-expanded="false"
+                                    aria-controls="coaches"
+                                >Coaches</li>
+                                <li 
+                                    class="list-group-item border-0 setting"
+                                    data-toggle="collapse"
+                                    href="#association"
+                                    role="button"
+                                    aria-expanded="false"
+                                    aria-controls="association"
+                                >Association</li>
+                                <li 
+                                    class="list-group-item border-0 setting"
+                                    data-toggle="collapse"
+                                    href="#scheme"
+                                    role="button"
+                                    aria-expanded="false"
+                                    aria-controls="scheme"
+                                >Scheme</li>
+                            </ul>
+                        </div>
+                        <div class="col">
+                            <div class="collapse" id="user">
+                                <div class="card">
+                                    <div class="card-header d-flex justify-content-between">
+                                        <h4>User Settings</h4>
+                                        <button type="button" class="close" href="#user" data-toggle="collapse" aria-controls="user" data-dismiss="user" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </div>
+                                    <div class="card-body">
+                                        <form action="">
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input type="text" class="form-control" id="email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="profileImg">Profile Image</label>
+                                                <input type="file" class="form-control-file" id="profileImg">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="collapse" id="coaches">
+                                <div class="card card-body">
+                                    coaches settings
+                                </div>
+                            </div>
+                            <div class="collapse" id="association">
+                                <div class="card card-body">
+                                    association settings
+                                </div>
+                            </div>
+                            <div class="collapse" id="scheme">
+                                <div class="card card-body">
+                                    scheme settings
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

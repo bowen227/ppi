@@ -119,3 +119,8 @@ h1 {
 .fa-pencil:hover {
     cursor: pointer;
 }
+
+.setting:hover {
+    background-color: #072f5f;
+    color: #fff;
+}
