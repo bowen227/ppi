@@ -3,7 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "copyfonts": "copyfiles -f node_modules/font-awesome/fonts/* dist/fonts",
+    "imagemin": "imagemin img/* -o dist/img",
+    "lite": "lite-server",
+    "start": "npm run lite",
+    "clean": "rimraf dist",
+    "usemin": "usemin index.html -d dist --htmlmin -o dist/index.html && usemin login.html -d dist --htmlmin -o dist/login.html && usemin signup.html -d dist --htmlmin -o dist/signup.html && dashboard.html -d dist --htmlmin -o dist/dashboard.html && usemin association.html -d dist --htmlmin -o dist/association.html && playerDetails.html -d dist --htmlmin -o dist/playerDetails.html",
+    "build": "npm run clean && npm run imagemin && npm run copyfonts && npm run usemin"
   },
   "author": "Brent Owen",
   "license": "ISC",
@@ -16,7 +23,13 @@
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "copyfiles": "^2.2.0",
+    "imagemin-cli": "^5.1.0",
+    "lite-server": "^2.6.1",
+    "rimraf": "^3.0.2",
+    "usemin-cli": "^0.6.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bowen227/ppi.git"
