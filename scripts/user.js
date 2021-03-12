@@ -15,10 +15,10 @@ function createCoach() {
 ////////////////////////////////////////////////
 ///////// LOGIN.HTML FUNCTIONS BELOW /////////
 
-const formError = document.getElementById('formError')
-
 function login(e) {
     e.preventDefault()
+
+    const formError = document.getElementById('formError')
     const t = document.getElementById('type').value
 
     if (t == 'association') {
@@ -30,7 +30,7 @@ function login(e) {
     }
 
     if (t == '') {
-        formError.innerHTML = `Need to select type`
+        formError.innerText = "Need to select type"
         formError.classList.add('p-2')
     }
 }
