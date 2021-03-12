@@ -241,14 +241,14 @@
                                 <li 
                                     class="list-group-item border-0 setting"
                                     data-toggle="collapse"
-                                    href="#scheme"
+                                    href="#theme"
                                     role="button"
                                     aria-expanded="false"
                                     aria-controls="scheme"
                                 >Scheme</li>
                             </ul>
                         </div>
-                        <div class="col">
+                        <div class="col-md-8">
                             <div class="collapse" id="user">
                                 <div class="card">
                                     <div class="card-header d-flex justify-content-between">
@@ -266,23 +266,56 @@
                                                 <label for="profileImg">Profile Image</label>
                                                 <input type="file" class="form-control-file" id="profileImg">
                                             </div>
+                                            <button class="btn btn-outline-primary">Save</button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                             <div class="collapse" id="coaches">
-                                <div class="card card-body">
-                                    coaches settings
+                                <div class="card">
+                                    <div class="card-header d-flex justify-content-between">
+                                        <h4>Coach Settings</h4>
+                                        <button type="button" class="close" href="#coaches" data-toggle="collapse" aria-controls="coaches" data-dismiss="coaches" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </div>
+                                    <div class="card-body">
+                                        No coaches to display <a href="#">add coach?</a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="collapse" id="association">
-                                <div class="card card-body">
-                                    association settings
+                                <div class="card">
+                                    <div class="card-header d-flex justify-content-between">
+                                        <h4>Association Settings</h4>
+                                        <button type="button" class="close" href="#association" data-toggle="collapse" aria-controls="association" data-dismiss="association" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="associationName">Association Name</label>
+                                            <input type="text" class="form-control" id="associationName">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="associationLogo">Association Logo</label>
+                                            <input type="file" class="form-control-file" id="associationLogo">
+                                        </div>
+                                        <button class="btn btn-outline-primary">Save</button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="collapse" id="scheme">
-                                <div class="card card-body">
-                                    scheme settings
+                            <div class="collapse" id="theme">
+                                <div class="card">
+                                    <div class="card-header d-flex justify-content-between">
+                                        <h4>Theme Settings</h4>
+                                        <button type="button" class="close" href="#theme" data-toggle="collapse" aria-controls="theme" data-dismiss="theme" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="selectTheme">Dark Theme</label>
+                                            <input type="range" min="0" max="1" value="1" class="form-control-range theme-select" id="selectTheme">
+                                          </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

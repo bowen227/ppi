@@ -124,3 +124,7 @@ h1 {
     background-color: #072f5f;
     color: #fff;
 }
+
+.theme-select {
+    width: 30px;
+}
