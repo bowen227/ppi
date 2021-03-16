@@ -17,38 +17,38 @@
 </head>
 <body onload="loadData()">
     <nav class="navbar px-md-5">
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
-            <img src="../img/PPI_logo_blue.png" width="60" height="60" />
+        <a role="button" class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="../img/PPI_logo_blue.png" width="60" height="60" alt="PPI Logo" />
             <h2 class="d-none d-lg-block m-0">Player Power Index</h2>
         </a>
         <button class="navbar-toggler" id="user-menu-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-            <img src="../img/default_user.png" width="50" height="50" />
+            <img src="../img/default_user.png" width="50" height="50" alt="User profile image" />
         </button>
       
         <div class="collapse navbar-collapse" id="navbarToggler">
           <ul class="navbar-nav mt-2 ml-auto dashboard-nav">
             <li class="nav-item mr-md-4" data-toggle="modal" data-target="#newAdmin">
-              <a class="nav-link" href="#">Add Admin <span class="sr-only">(current)</span></a>
+              <a role="button" class="nav-link" href="#">Add Admin</a>
             </li>
             <li class="nav-item mr-md-4" data-toggle="modal" data-target="#newCoach">
-              <a class="nav-link" href="#">Add Coach</a>
+              <a role="button" class="nav-link" href="#">Add Coach</a>
             </li>
             <li class="nav-item mr-md-4" data-toggle="modal" data-target="#settings">
-                <a class="nav-link" href="#">Settings</a>
+                <a role="button" class="nav-link" href="#">Settings</a>
               </li>
             <li class="nav-item mt-3">
-              <a href="index.html" class="btn btn-outline-warning">Sign Out</a>
+              <a role="button" href="index.html" class="btn btn-outline-warning">Sign Out</a>
             </li>
           </ul>
         </div>
     </nav>
 
-    <div class="container py-5">
+    <section class="container py-5">
         <h2>Hixson Youth Association</h2>
         <p>name of person logged in</p>
-    </div>
+    </section>
 
-    <div class="container">
+    <section class="container">
         <div class="row">
             <div id="teams-list" class="col-md-6 py-3">
                 no teams to display
@@ -57,7 +57,7 @@
                 no coaches to display
             </div>
         </div>
-    </div>
+    </section>
 
     <section class="container my-5">
         <div class="row py-2">
@@ -96,9 +96,9 @@
 
     <div class="py-md-5"></div>
 
-    <div class="jumbotron jumbotron-fluid m-0 px-3">
+    <footer class="jumbotron jumbotron-fluid m-0 px-3">
         <p>&#169; Player Power Index - PPI</p>
-    </div>
+    </footer>
 
     <!-- MODAL FOR ADDING NEW PLAYER -->
     <div class="modal fade" id="newPlayer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

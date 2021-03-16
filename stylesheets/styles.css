@@ -50,7 +50,7 @@ body, h1, h2, h3, h4, h5, p, span, li, button {
     color: #fff;
 }
 
-.main-heading {
+#main-heading {
     max-width: 1400px;
 }
 
@@ -127,4 +127,9 @@ h1 {
 
 .theme-select {
     width: 30px;
+}
+
+#toTopBtn {
+    bottom: 80px;
+    right: 20px;
 }

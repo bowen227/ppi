@@ -17,18 +17,18 @@
 </head>
 <body  onload="loadEvents()">
     <nav class="navbar px-md-5">
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
-            <img src="../img/PPI_logo_blue.png" width="60" height="60" />
+        <a role="button" class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="../img/PPI_logo_blue.png" width="60" height="60" alt="PPI logo" />
             <h2 class="d-none d-lg-block m-0">Player Power Index</h2>
         </a>
         <button class="navbar-toggler" id="user-menu-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-            <img src="../img/default_user.png" width="50" height="50" />
+            <img src="../img/default_user.png" width="50" height="50" alt="User profile image" />
         </button>
       
         <div class="collapse navbar-collapse" id="navbarToggler">
           <ul class="navbar-nav mt-2 ml-auto dashboard-nav">
             <li class="nav-item mr-md-4" data-toggle="modal" data-target="#newAdmin">
-              <a class="nav-link" href="#">Add Admin <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="#">Add Admin</a>
             </li>
             <li class="nav-item mr-md-4" data-toggle="modal" data-target="#newCoach">
               <a class="nav-link" href="#">Add Coach</a>
@@ -43,7 +43,7 @@
         </div>
     </nav>
 
-    <div class="container">
+    <section class="container">
         <div class="row">
             <div id="coach-association" class="col-sm-12 col-md-6 py-3 mt-4">
                 <h4></h4>
@@ -59,9 +59,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="container py-5">
+    <section class="container py-5">
         <div class="row">
             <div class="col py-3 mb-1">
                 <h5>Player List
@@ -72,7 +72,7 @@
         <ul class="list-group list-group-flush" id="playerList">
 
         </ul>
-    </div>
+    </section>
 
     <div class="py-5"></div>
 
@@ -271,9 +271,9 @@
         </div>
     </div>
 
-    <div class="jumbotron jumbotron-fluid m-0 px-3">
+    <footer class="jumbotron jumbotron-fluid m-0 px-3">
         <p>&#169; Player Power Index - PPI</p>
-    </div>
+    </footer>
 
 
     <!-- build:js js/main.js -->

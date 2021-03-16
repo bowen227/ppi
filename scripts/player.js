@@ -173,15 +173,16 @@ function displayPastEvals() {
                 <div class="col">
                     <div class="table-responsive">
                         <table class="table table-stripped">
+                        <caption class="sr-only">Past Evaluations</caption>
                             <thead>
                                 <tr>
-                                    <th>IN</th>
-                                    <th>OUT</th>
-                                    <th>TH</th>
-                                    <th>PI</th>
-                                    <th>HI</th>
-                                    <th>SPD</th>
-                                    <th>ATT</th>
+                                    <th scope="col">IN</th>
+                                    <th scope="col">OUT</th>
+                                    <th scope="col">TH</th>
+                                    <th scope="col">PI</th>
+                                    <th scope="col">HI</th>
+                                    <th scope="col">SPD</th>
+                                    <th scope="col">ATT</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -197,7 +198,6 @@ function displayPastEvals() {
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
         </div>
