@@ -39,7 +39,6 @@ function checkForData() {
     if (sCoaches) {
         const storedCoaches = JSON.parse(sCoaches)
         coaches = storedCoaches
-        console.log(coaches)
     } else {
         for (let i = 0; i < 10; i++) {
             let cIndex = Math.floor(Math.random() * 10)
@@ -61,30 +60,8 @@ function checkForData() {
     if (sPlayers) {
         const storedPlayers = JSON.parse(sPlayers)
         players = storedPlayers
-        console.log(players)
 
-        players.map(p => {
-            switch (p.group) {
-                case '6u':
-                    players_group_one.push(p)
-                    break;
-                
-                case '8u':
-                    players_group_two.push(p)
-                    break;
-    
-                case '10u':
-                    players_group_three.push(p)
-                    break;
-    
-                case '12u':
-                    players_group_four.push(p)
-                    break;
-    
-                default:
-                    break;
-            }
-        })
+        groupPlayers()
     } else {
         for (let index = 0; index < 100 ; index++) {
             const fistNameIndex = Math.floor(Math.random() * 10)
@@ -107,28 +84,7 @@ function checkForData() {
         }
         localStorage.setItem('players', JSON.stringify(players))
 
-        players.map(p => {
-            switch (p.group) {
-                case '6u':
-                    players_group_one.push(p)
-                    break;
-                
-                case '8u':
-                    players_group_two.push(p)
-                    break;
-    
-                case '10u':
-                    players_group_three.push(p)
-                    break;
-    
-                case '12u':
-                    players_group_four.push(p)
-                    break;
-    
-                default:
-                    break;
-            }
-        })
+        groupPlayers()
     }
 }
 
@@ -176,30 +132,30 @@ function checkForData() {
 //     groupPlayers()
 // }
 
-// function groupPlayers() {
-//     players.map(p => {
-//         switch (p.group) {
-//             case '6u':
-//                 players_group_one.push(p)
-//                 break;
+function groupPlayers() {
+    players.map(p => {
+        switch (p.group) {
+            case '6u':
+                players_group_one.push(p)
+                break;
             
-//             case '8u':
-//                 players_group_two.push(p)
-//                 break;
+            case '8u':
+                players_group_two.push(p)
+                break;
 
-//             case '10u':
-//                 players_group_three.push(p)
-//                 break;
+            case '10u':
+                players_group_three.push(p)
+                break;
 
-//             case '12u':
-//                 players_group_four.push(p)
-//                 break;
+            case '12u':
+                players_group_four.push(p)
+                break;
 
-//             default:
-//                 break;
-//         }
-//     })
-// }
+            default:
+                break;
+        }
+    })
+}
 
 function displayGroups() {
     groups.forEach(g => {
