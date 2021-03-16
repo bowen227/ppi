@@ -30,73 +30,176 @@ let pList = document.getElementById("player-list")
 // SEARCH GROUP
 let searchGroup = 'All'
 
-// CREATE RANDOM COACHES
-function createCoaches() {
-    for (let i = 0; i < 10; i++) {
-        let cIndex = Math.floor(Math.random() * 10)
-        let aIndex = Math.floor(Math.random() * 10)
 
-        const c = {
-            head: {fName: firstNames[cIndex], lName: lastNames[cIndex]},
-            assistant: {fName: firstNames[aIndex], lName: lastNames[aIndex]},
-            teamName: i,
-            players: [],
-            PPI: 0
+// CHECK FOR COACHES AND PLAYERS IN LOCAL STORAGE IF NONE CREATE THEM
+function checkForData() {
+    const sCoaches = localStorage.getItem("coaches")
+    const sPlayers = localStorage.getItem("players")
+
+    if (sCoaches) {
+        const storedCoaches = JSON.parse(sCoaches)
+        coaches = storedCoaches
+        console.log(coaches)
+    } else {
+        for (let i = 0; i < 10; i++) {
+            let cIndex = Math.floor(Math.random() * 10)
+            let aIndex = Math.floor(Math.random() * 10)
+    
+            const c = {
+                head: {fName: firstNames[cIndex], lName: lastNames[cIndex]},
+                assistant: {fName: firstNames[aIndex], lName: lastNames[aIndex]},
+                teamName: i,
+                players: [],
+                PPI: 0
+            }
+    
+            coaches.push(c)
         }
+        localStorage.setItem('coaches', JSON.stringify(coaches))
+    }
 
-        coaches.push(c)
+    if (sPlayers) {
+        const storedPlayers = JSON.parse(sPlayers)
+        players = storedPlayers
+        console.log(players)
+
+        players.map(p => {
+            switch (p.group) {
+                case '6u':
+                    players_group_one.push(p)
+                    break;
+                
+                case '8u':
+                    players_group_two.push(p)
+                    break;
+    
+                case '10u':
+                    players_group_three.push(p)
+                    break;
+    
+                case '12u':
+                    players_group_four.push(p)
+                    break;
+    
+                default:
+                    break;
+            }
+        })
+    } else {
+        for (let index = 0; index < 100 ; index++) {
+            const fistNameIndex = Math.floor(Math.random() * 10)
+            const element = firstNames[fistNameIndex];
+            const lastNameIndex = Math.floor(Math.random() * 10)
+            const groupIndex = Math.floor(Math.random() * 4)
+            const pIndex = Math.floor(Math.random() * 2)
+            
+            const p = {
+                fName: element,
+                lName: lastNames[lastNameIndex],
+                position: positions[pIndex],
+                group: groups[groupIndex],
+                PPI: ((Math.random() / 100 * 5) * 100).toFixed(2),
+                
+                profileImg: null
+            }
+    
+            players.push(p)
+        }
+        localStorage.setItem('players', JSON.stringify(players))
+
+        players.map(p => {
+            switch (p.group) {
+                case '6u':
+                    players_group_one.push(p)
+                    break;
+                
+                case '8u':
+                    players_group_two.push(p)
+                    break;
+    
+                case '10u':
+                    players_group_three.push(p)
+                    break;
+    
+                case '12u':
+                    players_group_four.push(p)
+                    break;
+    
+                default:
+                    break;
+            }
+        })
     }
 }
+
+// CREATE RANDOM COACHES
+// function createCoaches() {
+//     for (let i = 0; i < 10; i++) {
+//         let cIndex = Math.floor(Math.random() * 10)
+//         let aIndex = Math.floor(Math.random() * 10)
+
+//         const c = {
+//             head: {fName: firstNames[cIndex], lName: lastNames[cIndex]},
+//             assistant: {fName: firstNames[aIndex], lName: lastNames[aIndex]},
+//             teamName: i,
+//             players: [],
+//             PPI: 0
+//         }
+
+//         coaches.push(c)
+//     }
+//     localStorage.setItem('coaches', JSON.stringify(coaches))
+// }
 
 // CREATE RANDOM PLAYERS
-function createPlayers() {
-    for (let index = 0; index < 100 ; index++) {
-        const fistNameIndex = Math.floor(Math.random() * 10)
-        const element = firstNames[fistNameIndex];
-        const lastNameIndex = Math.floor(Math.random() * 10)
-        const groupIndex = Math.floor(Math.random() * 4)
-        const pIndex = Math.floor(Math.random() * 2)
+// function createPlayers() {
+//     for (let index = 0; index < 100 ; index++) {
+//         const fistNameIndex = Math.floor(Math.random() * 10)
+//         const element = firstNames[fistNameIndex];
+//         const lastNameIndex = Math.floor(Math.random() * 10)
+//         const groupIndex = Math.floor(Math.random() * 4)
+//         const pIndex = Math.floor(Math.random() * 2)
         
-        const p = {
-            fName: element,
-            lName: lastNames[lastNameIndex],
-            position: positions[pIndex],
-            group: groups[groupIndex],
-            PPI: ((Math.random() / 100 * 5) * 100).toFixed(2),
+//         const p = {
+//             fName: element,
+//             lName: lastNames[lastNameIndex],
+//             position: positions[pIndex],
+//             group: groups[groupIndex],
+//             PPI: ((Math.random() / 100 * 5) * 100).toFixed(2),
             
-            profileImg: null
-        }
+//             profileImg: null
+//         }
 
-        players.push(p)
-    }
-    
-    groupPlayers()
-}
+//         players.push(p)
+//     }
+//     localStorage.setItem('players', JSON.stringify(players))
+//     groupPlayers()
+// }
 
-function groupPlayers() {
-    players.map(p => {
-        switch (p.group) {
-            case '6u':
-                players_group_one.push(p)
-                break;
+// function groupPlayers() {
+//     players.map(p => {
+//         switch (p.group) {
+//             case '6u':
+//                 players_group_one.push(p)
+//                 break;
             
-            case '8u':
-                players_group_two.push(p)
-                break;
+//             case '8u':
+//                 players_group_two.push(p)
+//                 break;
 
-            case '10u':
-                players_group_three.push(p)
-                break;
+//             case '10u':
+//                 players_group_three.push(p)
+//                 break;
 
-            case '12u':
-                players_group_four.push(p)
-                break;
+//             case '12u':
+//                 players_group_four.push(p)
+//                 break;
 
-            default:
-                break;
-        }
-    })
-}
+//             default:
+//                 break;
+//         }
+//     })
+// }
 
 function displayGroups() {
     groups.forEach(g => {
@@ -360,28 +463,28 @@ function addPlayerToTeam(c) {
 }
 
 // GO TO PLAYERDETAILS.HTML AND SET CURRENT PLAYER
-// function gotoPlayerDetails(t, e) {
-//     const profileImg = t.children[0].children[0].children[0].src
-//     const firstName = t.children[0].children[1].innerHTML
-//     const lastName = t.children[0].children[2].innerHTML
-//     const position = t.children[0].children[3].innerHTML
-//     const PPI = t.children[0].children[4].innerHTML
+function gotoPlayerDetails(t, e) {
+    const profileImg = t.children[0].children[0].children[0].src
+    const firstName = t.children[0].children[1].innerHTML
+    const lastName = t.children[0].children[2].innerHTML
+    const position = t.children[0].children[3].innerHTML
+    const PPI = t.children[0].children[4].innerHTML
 
-//     const sPlayer = {
-//         profileImg: profileImg,
-//         fName: firstName.trim(),
-//         lName: lastName.trim(),
-//         position: position.trim(),
-//         PPI: PPI.trim()
-//     }
+    const sPlayer = {
+        profileImg: profileImg,
+        fName: firstName.trim(),
+        lName: lastName.trim(),
+        position: position.trim(),
+        PPI: PPI.trim()
+    }
 
-//     selectedPlayer = sPlayer
+    selectedPlayer = sPlayer
 
-//     document.location.href = `
-//     playerDetails.html?img=${selectedPlayer.profileImg}
-//     &fName=${selectedPlayer.fName}
-//     &lName=${selectedPlayer.lName}
-//     &position=${selectedPlayer.position}
-//     &ppi=${selectedPlayer.PPI}
-//     `
-// }
+    document.location.href = `
+    playerDetails.html?img=${selectedPlayer.profileImg}
+    &fName=${selectedPlayer.fName}
+    &lName=${selectedPlayer.lName}
+    &position=${selectedPlayer.position}
+    &ppi=${selectedPlayer.PPI}
+    `
+}
