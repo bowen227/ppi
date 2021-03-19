@@ -247,6 +247,8 @@ function updateCoachLastName() {
 
 // Add team name
 function addTeam() {
+    const teamName = document.getElementById('coach-association').children[1]
+
     teamName.innerHTML = `
     <div>
         <input id="tName" type="text" />
@@ -257,6 +259,8 @@ function addTeam() {
 
 // Save team name
 function saveTeamName(t) {
+    const teamName = document.getElementById('coach-association').children[1]
+
     team = t
     teamName.innerHTML = `${t}`
 }
