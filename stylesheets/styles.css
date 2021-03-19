@@ -31,6 +31,12 @@ body, h1, h2, h3, h4, h5, p, span, li, button {
     color: rgba(0, 0, 0, 0.685);
 }
 
+/* .signup-form-container {
+    background-image: url(../img/field_view.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+} */
+
 .signupBtn {
     border: 1px solid #072f5f;
     width: 100px;
