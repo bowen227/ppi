@@ -1,6 +1,48 @@
 ////////////////////////////////////////////////
 //////// DASHBOARD.HTML FUNCTIONS BELOW ////////
 
+// Create player class
+function Player(firstName, lastName, group, throws, bats) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.group = group;
+    this.throws = throws;
+    this.bats = bats;
+    this.team = 'undrafted';
+
+    this.renderPlayer = function() {
+        return `<li class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <img width="50px" height="auto" src="../img/default_user.png" />
+                        </div>
+                        <div class="col">
+                            ${firstName}
+                        </div>
+                        <div class="col d-none d-md-block align-self-center">
+                            ${lastName}
+                        </div>
+                        <div class="col">
+                            ${group}
+                        </div>
+                        <div class="col d-none d-md-block align-self-center">
+                            ${throws}
+                        </div>
+                        <div class="col d-none d-md-block align-self-center">
+                            ${bats}
+                        </div>
+                    </div>
+                </li>`
+    }
+}
+
+// Create coach class
+function Coach(firstName, lastName, isHead) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.isHead = isHead;
+}
+
 // ARRAY OF PLAYERS
 let players = []
 
@@ -8,6 +50,10 @@ let players = []
 const firstNames = ['Tom', 'Easton', 'Max', 'Leigh', 'Samuel', 'Doug', 'Peter', 'Bradley', 'Chad', 'Charles']
 const lastNames = ['Owen', 'Golliher', 'Spears', 'Martin', 'Manning', 'Wells', 'Sokohl', 'Reece', 'Smith', 'Coulter']
 const positions = ['Infield', 'Outfield']
+const groups = ['6u', '8u', '10u', '12u']
+const batsWith = ['right', 'left', 'switch']
+const throwsWith = ['right', 'left']
+const type = ['head', 'assistant']
 
 // ARRAY OF EVENTS
 const uEvents = [
@@ -23,10 +69,7 @@ const uEvents = [
 let teamPPI = 0
 
 // COACH OBJ
-let coach = {
-    firstName: 'Ron',
-    lastName: 'Diggity'
-}
+let coach = new Coach('Ron', 'Diggity', true)
 
 // TEAM NAME
 let team = null
@@ -39,15 +82,11 @@ function createPlayers() {
     for (let index = 0; index < firstNames.length; index++) {
         const element = firstNames[index];
         const lastNameIndex = Math.floor(Math.random() * 10)
-        const pIndex = Math.floor(Math.random() * 2)
-        
-        const p = {
-            fName: element,
-            lName: lastNames[lastNameIndex],
-            position: positions[pIndex],
-            PPI: parseFloat((Math.random() / 100 * 5) * 100).toFixed(2),
-            profileImg: null
-        }
+        const groupIndex = Math.floor(Math.random() * 2)
+        const throwsIndex = Math.floor(Math.random() * 2)
+        const batsIndex = Math.floor(Math.random() * 3)
+
+        const p = new Player(element, lastNames[lastNameIndex], groups[groupIndex], throwsWith[throwsIndex], batsWith[batsIndex])
 
         players.push(p)
     }
@@ -58,27 +97,7 @@ createPlayers()
 // DISPLAY THE PLAYERS IN THE DASHBOARD LIST OF PLAYERS
 function displayPlayers() {
     players.forEach(element => {
-        pList.innerHTML += `
-        <li role="button" id="list-item" class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
-            <div class="row">
-                <div class="col">
-                    <img alt="user profile image" src=${element.profileImg ? element.profileImg : `../img/default_user.png`} width="40" height="40" />
-                </div>
-                <div class="col d-none d-md-block align-self-center">
-                    ${element.fName}
-                </div>
-                <div class="col align-self-center">
-                    ${element.lName}
-                </div>
-                <div class="col d-none d-md-block align-self-center">
-                    ${element.position}
-                </div>
-                <div class="col align-self-center">
-                    ${element.PPI}
-                </div>
-            </div>
-        </li>
-        `
+        pList.innerHTML += element.renderPlayer();
     });
 }
 
@@ -177,37 +196,11 @@ function addPlayer() {
     const lName = document.getElementById('pLastName')
     const pIndex = Math.floor(Math.random() * 2)
 
-    const p = {
-        fName: fName.value,
-        lName: lName.value,
-        position: positions[pIndex],
-        PPI: parseFloat((Math.random() / 100 * 5) *100).toFixed(2),
-        profileImg: null
-    }
+    const p = new Player(fName.value, lName.value, groups[Math.floor(Math.random() * 2)], throwsWith[Math.floor(Math.random() * 2)], batsWith[Math.floor(Math.random() * 3)])
 
     players.push(p)
 
-    pList.innerHTML += `
-    <li role="button" id="list-item" class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
-        <div class="row">
-            <div class="col">
-                <img alt="user profile image" src=${p.profileImg ? p.profileImg : `../img/default_user.png`} width="40" height="40" />
-            </div>
-            <div class="col d-none d-md-block align-self-center">
-                ${p.fName}
-            </div>
-            <div class="col align-self-center">
-                ${p.lName}
-            </div>
-            <div class="col d-none d-md-block align-self-center">
-                ${p.position}
-            </div>
-            <div class="col align-self-center">
-                ${p.PPI}
-            </div>
-        </div>
-    </li>
-    `
+    pList.innerHTML += p.renderPlayer();
 }
 
 // ADD NEW ADMIN
@@ -237,25 +230,19 @@ function gotoPlayerDetails(t, e) {
     const profileImg = t.children[0].children[0].children[0].src
     const firstName = t.children[0].children[1].innerHTML
     const lastName = t.children[0].children[2].innerHTML
-    const position = t.children[0].children[3].innerHTML
-    const PPI = t.children[0].children[4].innerHTML
+    const group = t.children[0].children[3].innerHTML
+    const throws = t.children[0].children[4].innerHTML
+    const bats = t.children[0].children[5].innerHTML
 
-    const sPlayer = {
-        profileImg: profileImg,
-        fName: firstName.trim(),
-        lName: lastName.trim(),
-        position: position.trim(),
-        PPI: PPI.trim()
-    }
-
-    selectedPlayer = sPlayer
+    const selectedPlayer = new Player(firstName, lastName, group, throws, bats);
 
     document.location.href = `
-    playerDetails.html?img=${selectedPlayer.profileImg}
-    &fName=${selectedPlayer.fName}
-    &lName=${selectedPlayer.lName}
-    &position=${selectedPlayer.position}
-    &ppi=${selectedPlayer.PPI}
+    playerDetails.html?
+    &fName=${selectedPlayer.firstName}
+    &lName=${selectedPlayer.lastName}
+    &group=${selectedPlayer.group}
+    &throws=${selectedPlayer.throws}
+    &bats=${selectedPlayer.bats}
     `
 }
 
