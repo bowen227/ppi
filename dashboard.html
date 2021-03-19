@@ -98,6 +98,32 @@
                             <label for="lastName">Last Name</label>
                             <input type="text" id="pLastName" class="form-control" />
                         </div>
+                        <div class="form-group">
+                            <label for="group">Group</label>
+                            <select name="group" id="group" class="form-control">
+                                <option value="6u">6U</option>
+                                <option value="8u">8U</option>
+                                <option value="10u">10U</option>
+                                <option value="12u">12U</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="throws">Throws</label>
+                            <select name="throws" id="throws" class="form-control">
+                                <option value="na">N/A</option>
+                                <option value="right">Right</option>
+                                <option value="left">left</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bats">Bats</label>
+                            <select name="bats" id="bats" class="form-control">
+                                <option value="na">N/A</option>
+                                <option value="right">Right</option>
+                                <option value="left">Left</option>
+                                <option value="switch">Switch</option>
+                            </select>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -280,13 +306,14 @@
     <script src="/node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/scripts/main.js"></script>
+    <script src="/scripts/index.js"></script>
 
     <script>
         window.onload = function loadEvents() {
-            createPlayers()
+            createRandoms()
             showEvents()
             displayPlayers()
+            displayCoach()
         }
     </script>
     <!-- endbuild -->

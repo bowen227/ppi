@@ -15,7 +15,7 @@
 
     <title>PPI: Player Power Index - Association</title>
 </head>
-<body onload="loadData()">
+<body>
     <nav class="navbar px-md-5">
         <a role="button" class="navbar-brand d-flex align-items-center" href="index.html">
             <img src="../img/PPI_logo_blue.png" width="60" height="60" alt="PPI Logo" />
@@ -74,7 +74,7 @@
                     <input type="text" id="searchPlayer" class="form-control" placeholder="Search Player" name="search player" oninput="searchPlayer()" />
                 </div>
                 <div id="group-headings" class="mt-3">
-                    <button class="btn btn-outline-dark groupBtn" onclick="displayPlayers(this)">All</button>
+                    <button class="btn btn-outline-dark groupBtn" onclick="displayGroupedPlayers(this)">All</button>
                 </div>
             </div>
         </div>
@@ -129,11 +129,28 @@
                                 <option value="12u">12U</option>
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="throws">Throws</label>
+                            <select name="throws" id="throws" class="form-control">
+                                <option value="na">N/A</option>
+                                <option value="right">Right</option>
+                                <option value="left">left</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bats">Bats</label>
+                            <select name="bats" id="bats" class="form-control">
+                                <option value="na">N/A</option>
+                                <option value="right">Right</option>
+                                <option value="left">Left</option>
+                                <option value="switch">Switch</option>
+                            </select>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addPlayer()">Save</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addAssociationPlayer()">Save</button>
                 </div>
             </div>
         </div>
@@ -334,14 +351,11 @@
     <script src="/node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/scripts/association.js"></script>
+    <script src="/scripts/index.js"></script>
     <script>
         window.onload = () => {
-            // checkForData()
             createRandoms()
-            // createPlayers()
             displayGroups()
-            // createCoaches()
         }
     </script>
     <!-- endbuild -->
