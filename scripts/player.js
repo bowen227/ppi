@@ -1,26 +1,56 @@
 
 let currentPlayer = null
 
+// Create player class
+function Player(firstName, lastName, group, throws, bats) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.group = group;
+    this.throws = throws;
+    this.bats = bats;
+    this.team = 'undrafted';
+
+    this.renderPlayer = function() {
+        return `<li class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <img width="50px" height="auto" src="../img/default_user.png" />
+                        </div>
+                        <div class="col">
+                            ${firstName}
+                        </div>
+                        <div class="col d-none d-md-block align-self-center">
+                            ${lastName}
+                        </div>
+                        <div class="col">
+                            ${group}
+                        </div>
+                        <div class="col d-none d-md-block align-self-center">
+                            ${throws}
+                        </div>
+                        <div class="col d-none d-md-block align-self-center">
+                            ${bats}
+                        </div>
+                    </div>
+                </li>`
+    }
+}
+
 // GET PLAYER DETAILS FROM ROUTE AND CREATE OBJ SET TO CURRENTPLAYER
 function getPlayer() {
     const qString = window.location.search
     const urlParams = new URLSearchParams(qString)
 
-    const profileImg = urlParams.get('img')
+    // const profileImg = urlParams.get('img')
     const fName = urlParams.get('fName')
     const lName = urlParams.get('lName')
-    const position = urlParams.get('position')
-    const PPI = urlParams.get('ppi')
+    const group = urlParams.get('group')
+    const throws = urlParams.get('throws')
+    const bats = urlParams.get('bats')
 
-    const player = {
-        profileImg: profileImg,
-        fName: fName,
-        lName: lName,
-        position: position,
-        PPI: PPI
-    }
+    const p = new Player(fName, lName, group, throws, bats);
 
-    currentPlayer = player
+    currentPlayer = p
 }
 
 getPlayer()
@@ -32,21 +62,21 @@ function displayPlayer() {
     <div>
         <div class="row">
             <div class="col-3">
-                <img src=${currentPlayer.profileImg} width="60" height="60" />
+                <img src='../img/default_user.png' width="60" height="60" />
             </div>
             <div class="col">
-                <h2>${currentPlayer.fName} ${currentPlayer.lName}</h2>
-                <p>${currentPlayer.position}</p>
+                <h2>${currentPlayer.firstName} ${currentPlayer.lastName}</h2>
+                <p>${currentPlayer.team} - ${currentPlayer.group}</p>
             </div>
         </div>
         <div class="row pt-5">
             <div class="col">
-                <h3>Player Power Index</h3>
+                <h3>Throws: ${currentPlayer.throws}</h3>
             </div>
         </div>
         <div class="row">
             <div class="col">
-            <h1>${currentPlayer.PPI}</h1>
+            <h3>Bats: ${currentPlayer.bats}</h3>
             </div>
         </div>
     </div>

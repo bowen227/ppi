@@ -1,8 +1,47 @@
 ////////////////////////////////////////////////
 /////// ASSOCIATION.HTML FUNCTIONS BELOW ///////
 
-// PPI API ROUTE
-// const PPI_API = 'http://localhost:3000/api'
+// Create coach class
+function Coach(firstName, lastName, isHead) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.isHead = isHead;
+}
+
+// Create player class
+function Player(firstName, lastName, group, throws, bats) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.group = group;
+    this.throws = throws;
+    this.bats = bats;
+    this.team = 'undrafted';
+
+    this.renderPlayer = function() {
+        return `<li class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <img width="50px" height="auto" src="../img/default_user.png" />
+                        </div>
+                        <div class="col">
+                            ${firstName}
+                        </div>
+                        <div class="col d-none d-md-block align-self-center">
+                            ${lastName}
+                        </div>
+                        <div class="col">
+                            ${group}
+                        </div>
+                        <div class="col d-none d-md-block align-self-center">
+                            ${throws}
+                        </div>
+                        <div class="col d-none d-md-block align-self-center">
+                            ${bats}
+                        </div>
+                    </div>
+                </li>`
+    }
+}
 
 // ARRAY OF COACHES
 let coaches = []
@@ -19,6 +58,8 @@ const firstNames = ['Tom', 'Easton', 'Max', 'Leigh', 'Samuel', 'Doug', 'Peter', 
 const lastNames = ['Owen', 'Golliher', 'Spears', 'Martin', 'Manning', 'Wells', 'Sokohl', 'Reece', 'Smith', 'Coulter']
 const positions = ['Infield', 'Outfield']
 const groups = ['6u', '8u', '10u', '12u']
+const batsWith = ['right', 'left', 'switch']
+const throwsWith = ['right', 'left']
 const type = ['head', 'assistant']
 
 // GET GROUP LIST ELEMENT FROM DOM
@@ -32,106 +73,74 @@ let searchGroup = 'All'
 
 
 // CHECK FOR COACHES AND PLAYERS IN LOCAL STORAGE IF NONE CREATE THEM
-function checkForData() {
-    const sCoaches = localStorage.getItem("coaches")
-    const sPlayers = localStorage.getItem("players")
+// Not using due to can't store renderPlayer method in localstorage skipped for now
+// function checkForData() {
+//     const sCoaches = localStorage.getItem("coaches")
+//     const sPlayers = localStorage.getItem("players")
 
-    if (sCoaches) {
-        const storedCoaches = JSON.parse(sCoaches)
-        coaches = storedCoaches
-    } else {
-        for (let i = 0; i < 10; i++) {
-            let cIndex = Math.floor(Math.random() * 10)
-            let aIndex = Math.floor(Math.random() * 10)
+//     if (sCoaches) {
+//         const storedCoaches = JSON.parse(sCoaches)
+//         coaches = storedCoaches
+//     } else {
+//         for (let i = 0; i < 10; i++) {
+//             let cIndex = Math.floor(Math.random() * 10)
+
+//             const c = new Coach(firstNames[cIndex], lastNames[cIndex], false);
     
-            const c = {
-                head: {fName: firstNames[cIndex], lName: lastNames[cIndex]},
-                assistant: {fName: firstNames[aIndex], lName: lastNames[aIndex]},
-                teamName: i,
-                players: [],
-                PPI: 0
-            }
-    
-            coaches.push(c)
-        }
-        localStorage.setItem('coaches', JSON.stringify(coaches))
-    }
+//             coaches.push(c)
+//         }
+//         localStorage.setItem('coaches', JSON.stringify(coaches))
+//     }
 
-    if (sPlayers) {
-        const storedPlayers = JSON.parse(sPlayers)
-        players = storedPlayers
+//     if (sPlayers) {
+//         const storedPlayers = JSON.parse(sPlayers)
+//         players = storedPlayers
 
-        groupPlayers()
-    } else {
-        for (let index = 0; index < 100 ; index++) {
-            const fistNameIndex = Math.floor(Math.random() * 10)
-            const element = firstNames[fistNameIndex];
-            const lastNameIndex = Math.floor(Math.random() * 10)
-            const groupIndex = Math.floor(Math.random() * 4)
-            const pIndex = Math.floor(Math.random() * 2)
+//         groupPlayers()
+//     } else {
+//         for (let index = 0; index < 100 ; index++) {
+//             const firstNameIndex = Math.floor(Math.random() * 10)
+//             const lastNameIndex = Math.floor(Math.random() * 10)
+//             const groupIndex = Math.floor(Math.random() * 4)
+//             const batsIndex = Math.floor(Math.random() * 3)
+//             const throwsIndex = Math.floor(Math.random() * 2)
+
+//             const p = new Player(firstNames[firstNameIndex], lastNames[lastNameIndex], groups[groupIndex], throwsWith[throwsIndex], batsWith[batsIndex]);
             
-            const p = {
-                fName: element,
-                lName: lastNames[lastNameIndex],
-                position: positions[pIndex],
-                group: groups[groupIndex],
-                PPI: ((Math.random() / 100 * 5) * 100).toFixed(2),
-                
-                profileImg: null
-            }
-    
-            players.push(p)
-        }
-        localStorage.setItem('players', JSON.stringify(players))
+//             players.push(p)
+//         }
+//         localStorage.setItem('players', JSON.stringify(players))
 
-        groupPlayers()
+//         groupPlayers()
+//     }
+// }
+
+// Create random coaches and players
+function createRandoms() {
+    for (let index = 0; index < 100 ; index++) {
+        const firstNameIndex = Math.floor(Math.random() * 10)
+        const lastNameIndex = Math.floor(Math.random() * 10)
+        const groupIndex = Math.floor(Math.random() * 4)
+        const batsIndex = Math.floor(Math.random() * 3)
+        const throwsIndex = Math.floor(Math.random() * 2)
+
+        const p = new Player(firstNames[firstNameIndex], lastNames[lastNameIndex], groups[groupIndex], throwsWith[throwsIndex], batsWith[batsIndex]);
+        
+        players.push(p)
     }
+
+    for (let i = 0; i < 10; i++) {
+        let cIndex = Math.floor(Math.random() * 10)
+
+        const c = new Coach(firstNames[cIndex], lastNames[cIndex], false);
+
+        coaches.push(c)
+    }
+
+    groupPlayers()
 }
 
-// CREATE RANDOM COACHES
-// function createCoaches() {
-//     for (let i = 0; i < 10; i++) {
-//         let cIndex = Math.floor(Math.random() * 10)
-//         let aIndex = Math.floor(Math.random() * 10)
-
-//         const c = {
-//             head: {fName: firstNames[cIndex], lName: lastNames[cIndex]},
-//             assistant: {fName: firstNames[aIndex], lName: lastNames[aIndex]},
-//             teamName: i,
-//             players: [],
-//             PPI: 0
-//         }
-
-//         coaches.push(c)
-//     }
-//     localStorage.setItem('coaches', JSON.stringify(coaches))
-// }
-
-// CREATE RANDOM PLAYERS
-// function createPlayers() {
-//     for (let index = 0; index < 100 ; index++) {
-//         const fistNameIndex = Math.floor(Math.random() * 10)
-//         const element = firstNames[fistNameIndex];
-//         const lastNameIndex = Math.floor(Math.random() * 10)
-//         const groupIndex = Math.floor(Math.random() * 4)
-//         const pIndex = Math.floor(Math.random() * 2)
-        
-//         const p = {
-//             fName: element,
-//             lName: lastNames[lastNameIndex],
-//             position: positions[pIndex],
-//             group: groups[groupIndex],
-//             PPI: ((Math.random() / 100 * 5) * 100).toFixed(2),
-            
-//             profileImg: null
-//         }
-
-//         players.push(p)
-//     }
-//     localStorage.setItem('players', JSON.stringify(players))
-//     groupPlayers()
-// }
-
+// Sort players
 function groupPlayers() {
     players.map(p => {
         switch (p.group) {
@@ -157,6 +166,7 @@ function groupPlayers() {
     })
 }
 
+// Display group buttons
 function displayGroups() {
     groups.forEach(g => {
         gList.innerHTML += `
@@ -165,6 +175,7 @@ function displayGroups() {
     })
 }
 
+// Display grouped players
 function displayPlayers(searchGroup) {
 
     if (pList.innerHTML.length > 0) {
@@ -175,135 +186,36 @@ function displayPlayers(searchGroup) {
 
     if (searchGroup.innerHTML == 'All') {
         players.forEach(p => {
-            pList.innerHTML += `
-            <li class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
-                    </div>
-                    <div class="col">
-                        ${p.fName}
-                    </div>
-                    <div class="col d-none d-md-block align-self-center">
-                        ${p.lName}
-                    </div>
-                    <div class="col">
-                        ${p.group}
-                    </div>
-                    <div class="col d-none d-md-block align-self-center">
-                        ${p.PPI}
-                    </div>
-                </div>
-            </li>
-            `
+            pList.innerHTML += p.renderPlayer();
         })
     }
 
     if (searchGroup.innerHTML == '6u') {
         players_group_one.forEach(p => {
-            pList.innerHTML += `
-            <li class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
-                    </div>
-                    <div class="col">
-                        ${p.fName}
-                    </div>
-                    <div class="col d-none d-md-block align-self-center">
-                        ${p.lName}
-                    </div>
-                    <div class="col">
-                        ${p.group}
-                    </div>
-                    <div class="col d-none d-md-block align-self-center">
-                        ${p.PPI}
-                    </div>
-                </div>
-            </li>
-            `
+            pList.innerHTML += p.renderPlayer();
         })
     }
 
     if (searchGroup.innerHTML == '8u') {
         players_group_two.forEach(p => {
-            pList.innerHTML += `
-            <li class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
-                    </div>
-                    <div class="col">
-                        ${p.fName}
-                    </div>
-                    <div class="col d-none d-md-block align-self-center">
-                        ${p.lName}
-                    </div>
-                    <div class="col">
-                        ${p.group}
-                    </div>
-                    <div class="col d-none d-md-block align-self-center">
-                        ${p.PPI}
-                    </div>
-                </div>
-            </li>
-            `
+            pList.innerHTML += p.renderPlayer();
         })
     }
 
     if (searchGroup.innerHTML == '10u') {
         players_group_three.forEach(p => {
-            pList.innerHTML += `
-            <li class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
-                    </div>
-                    <div class="col">
-                        ${p.fName}
-                    </div>
-                    <div class="col d-none d-md-block align-self-center">
-                        ${p.lName}
-                    </div>
-                    <div class="col">
-                        ${p.group}
-                    </div>
-                    <div class="col d-none d-md-block align-self-center">
-                        ${p.PPI}
-                    </div>
-                </div>
-            </li>
-            `
+            pList.innerHTML += p.renderPlayer();
         })
     }
 
     if (searchGroup.innerHTML == '12u') {
         players_group_four.forEach(p => {
-            pList.innerHTML += `
-            <li class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <img width="50px" height="auto" src=${p.profileImg ? p.profileImg : "../img/default_user.png"} />
-                    </div>
-                    <div class="col">
-                        ${p.fName}
-                    </div>
-                    <div class="col d-none d-md-block align-self-center">
-                        ${p.lName}
-                    </div>
-                    <div class="col">
-                        ${p.group}
-                    </div>
-                    <div class="col d-none d-md-block align-self-center">
-                        ${p.PPI}
-                    </div>
-                </div>
-            </li>
-            `
+            pList.innerHTML += p.renderPlayer();
         })
     }
 }
 
+// Search players by first and last name 
 function searchPlayer() {
     const searchTerm = document.getElementById('searchPlayer').value.toLowerCase()
 
@@ -316,30 +228,10 @@ function searchPlayer() {
     for (let index = 0; index < players.length; index++) {
         const element = players[index];
 
-        const name = `${element.fName} ${element.lName}`
+        const name = `${element.firstName} ${element.lastName}`
         
         if (name.toLowerCase().includes(searchTerm)) {
-            pList.innerHTML += `
-            <li class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <img width="50px" height="auto" src=${element.profileImg ? element.profileImg : "../img/default_user.png"} />
-                    </div>
-                    <div class="col d-none d-md-block align-self-center">
-                        ${element.fName}
-                    </div>
-                    <div class="col">
-                        ${element.lName}
-                    </div>
-                    <div class="col">
-                        ${element.group}
-                    </div>
-                    <div class="col d-none d-md-block align-self-center">
-                        ${element.PPI}
-                    </div>
-                </div>
-            </li>
-            `
+            pList.innerHTML += element.renderPlayer();
         }
     }
 }
@@ -423,24 +315,18 @@ function gotoPlayerDetails(t, e) {
     const profileImg = t.children[0].children[0].children[0].src
     const firstName = t.children[0].children[1].innerHTML
     const lastName = t.children[0].children[2].innerHTML
-    const position = t.children[0].children[3].innerHTML
-    const PPI = t.children[0].children[4].innerHTML
+    const group = t.children[0].children[3].innerHTML
+    const throws = t.children[0].children[4].innerHTML
+    const bats = t.children[0].children[5].innerHTML
 
-    const sPlayer = {
-        profileImg: profileImg,
-        fName: firstName.trim(),
-        lName: lastName.trim(),
-        position: position.trim(),
-        PPI: PPI.trim()
-    }
-
-    selectedPlayer = sPlayer
+    const selectedPlayer = new Player(firstName, lastName, group, throws, bats);
 
     document.location.href = `
-    playerDetails.html?img=${selectedPlayer.profileImg}
-    &fName=${selectedPlayer.fName}
-    &lName=${selectedPlayer.lName}
-    &position=${selectedPlayer.position}
-    &ppi=${selectedPlayer.PPI}
+    playerDetails.html?
+    &fName=${selectedPlayer.firstName}
+    &lName=${selectedPlayer.lastName}
+    &group=${selectedPlayer.group}
+    &throws=${selectedPlayer.throws}
+    &bats=${selectedPlayer.bats}
     `
 }
