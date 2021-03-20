@@ -10,6 +10,10 @@ body, h1, h2, h3, h4, h5, p, span, li, button {
     color: #212529;
 }
 
+body {
+    background-color: #e7e6e68e;
+}
+
 .navbar-toggler {
     border-color: #072f5f;
 }
@@ -30,12 +34,6 @@ body, h1, h2, h3, h4, h5, p, span, li, button {
 .nav-link:hover {
     color: rgba(0, 0, 0, 0.685);
 }
-
-/* .signup-form-container {
-    background-image: url(../img/field_view.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-} */
 
 .signupBtn {
     border: 1px solid #072f5f;
@@ -94,6 +92,7 @@ h1 {
 
 .shadow {
     max-width: 330px;
+    background-color: #fff;
 }
 
 .shadow:hover {
@@ -151,4 +150,8 @@ h1 {
 #toTopBtn {
     bottom: 80px;
     right: 20px;
+}
+
+.jumbotron {
+    background-color: #072f5f !important;
 }
