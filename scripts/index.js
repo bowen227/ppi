@@ -8,6 +8,11 @@ function Player(firstName, lastName, group, throws, bats) {
     this.throws = throws;
     this.bats = bats;
     this.team = 'undrafted';
+    this.playerEvals = [];
+
+    this.calcPPI = function() {
+        console.log('calc ppi');
+    }
 
     this.renderPlayer = function() {
         return `<li class="list-group-item player" onclick="gotoPlayerDetails(this, event)">
@@ -100,7 +105,7 @@ function createRandoms() {
         const throwsIndex = Math.floor(Math.random() * 2)
 
         const p = new Player(firstNames[firstNameIndex], lastNames[lastNameIndex], groups[groupIndex], throwsWith[throwsIndex], batsWith[batsIndex]);
-        
+
         players.push(p)
     }
 
