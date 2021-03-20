@@ -85,6 +85,19 @@ h1 {
 
 .login-form-container {
     min-width: 320px;
+    box-shadow: 1px 4px 8px gray;
+}
+
+.signup-form-container .card {
+    box-shadow: 1px 4px 8px gray;
+}
+
+.shadow {
+    max-width: 330px;
+}
+
+.shadow:hover {
+    font-weight: bolder;
 }
 
 .player:hover {
