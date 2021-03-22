@@ -236,6 +236,8 @@ function displayCoach() {
 
 // Update coach details
 function updateCoachDetails() {
+    const displayName = document.getElementById('coach-association').children[0]
+
     displayName.innerHTML = `
     <input type="text" id="editLastName" placeHolder=${coach.lastName} />
     <button class="btn btn-primary" onclick="updateCoachLastName()">Save</button>
@@ -244,6 +246,8 @@ function updateCoachDetails() {
 
 // Update coach last name
 function updateCoachLastName() {
+    const displayName = document.getElementById('coach-association').children[0]
+
     const updatedName = document.getElementById('editLastName').value
     coach.lastName = updatedName
 
