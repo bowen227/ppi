@@ -266,6 +266,11 @@ function addTeam() {
     `
 }
 
+// Add team association.html
+function addNewTeam() {
+    console.log("New Team");
+}
+
 // Save team name
 function saveTeamName(t) {
     const teamName = document.getElementById('coach-association').children[1]
